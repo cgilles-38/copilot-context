@@ -1,7 +1,7 @@
 
 # === IDENTITÉ ===
 Nom : Christian Gilles
-Localisation : Lyon, Varces (suivi local)
+Localisation : Grenoble, Varces (suivi local)
 Préférences : Communication synthétique, non intrusive
 
 # === SUJETS SUIVIS ===
@@ -13,6 +13,8 @@ Préférences : Communication synthétique, non intrusive
 - Urbanisme local
 - Veille environnementale
 - Projets d’aménagement
+- Chiens discipline obéissance 
+- Rugby
 
 # === STYLE DE COMMUNICATION SOUHAITÉ ===
 - Synthèse courte
