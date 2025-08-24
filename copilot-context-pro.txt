@@ -1,0 +1,463 @@
+# === IDENTITÉ ===
+Nom : Christian Gilles
+Poste : Chef de Projet Technique
+Manager : Jean-Noël Patrouillault
+Skip Manager : Damien Dine
+Localisation : LYON, Prodware Rhône Alpes
+
+# === EXPÉRIENCE ===
+- Développeur en C/AL depuis 20 ans
+- Environnement AL avec Visual Studio Code depuis 6 mois
+- Utilisation intensive de GitHub Copilot depuis 2 mois
+
+# === PROJETS EN COURS ===
+- Optimisation proactive de GitHub Copilot dans un projet Business Central AL
+- Création et utilisation d’un fichier copilot-context.txt pour améliorer l’automatisation
+
+# === VEILLE TECHNIQUE SOUHAITÉE ===
+- Ciblée, globale et non intrusive
+- Portant uniquement sur les évolutions techniques de Business Central NAV
+- Partagée dans une conversation Teams dédiée entre Christian et Copilot
+- Informé avant les collègues
+- Réception de toutes les informations techniques ayant une influence majeure sur le métier
+
+## Projet FROMM France – GLOBAL
+# 📘 CONTEXTE COPILOT FROMM FRANCE (Structure Optimisée)
+
+Version structurée: 23/08/2025  (Ajout index + hiérarchisation)  
+Dernière révision structurée: 23/08/2025  (TOC cliquable + synchro mapping objets)  
+NOTE: Ancienne annexe historique supprimée (archivage Git) pour alléger ce fichier. Références essentielles uniquement.
+
+---
+## 🗂️ Index Rapide
+1. [🎯 Vision & Objectifs](#-vision--objectifs)
+2. [🚦 États & Phases](#-états--phases-synthèse)
+3. [🧭 Gouvernance & Procédures](#-gouvernance--procédures-essentielles)
+4. [🛠 Outils Clés](#-outils-clés)
+5. [📐 Standards & Conventions](#-standards--conventions-prioritaires)
+6. [🧱 Mapping Objets 50xxx ➜ 60xxx](#-mapping-objets-50xxx--60xxx-rappel)
+7. [🔒 Règles Critiques](#-règles-critiques-blocage)
+8. [✔️ Processus Qualité & Tests](#️-processus-qualité--tests-synthèse)
+9. [👥 Interlocuteurs](#-interlocuteurs-rôle-mémo)
+10. [📑 Références Clés](#-références-clés-immédiates)
+11. [🧪 Snippets & Productivité](#-snippets--productivité)
+12. [🛑 Quotas](#-quotas)
+13. [📎 Annexe Historique](#-annexe--contenu-intégral-historique-inchangé)
+
+---
+## 🎯 Vision & Objectifs
+Migration NAV 2013 (objets 50xxx) vers Business Central 26 (objets 60xxx) en assurant: continuité opérationnelle, conformité, performance, standardisation code, suppression spécifiques obsolètes.
+
+## 🚦 États & Phases (Synthèse)
+- Phase actuelle: Consolidation post-migration Reports (commercial + statistique), préparation campagne tests structurée.
+- Reports: 47 commerciaux migrés, 13 statistiques optimisés (SP-1712). Layouts normalisés.x
+
+## 🧭 Gouvernance & Procédures (Condensé)
+- Ce fichier conserve seulement vision, phases, règles critiques.
+- Détails déplacés vers : `app/docs/Standards/`, `app/docs/Guides/`, `COP/README.md`.
+- Branches dédiées pour évolutions majeures; références horodatées dans `Prompt.md`.
+- Cohérence docs ↔ code obligatoire; pas de suppression sans analyse impact.
+- Traçabilité prompts : 1 ID unique (voir `COP/README.md`).
+
+### 🔁 Traçabilité COP (Rappel 3 points)
+1. Result : complété à la clôture (livrables/impact).
+2. Summary : enrichi en continu pendant échanges.
+3. ID unique dans `Prompt.md`, summary, result.
+
+## 🛠 Outils Clés (Référence rapide)
+- Extension fromm-extension (Ctrl+Alt+F) normalisation.
+- Reports : `app\src\Report\`
+- Layouts RDLC : `app\src\Report\layout\` (chemin stable)
+
+## 📐 Standards (Résumé)
+| Domaine | Règle | Source |
+|---------|-------|--------|
+| Suffixes objets | Suffixe `FR0` obligatoire | Coding Standards |
+| IDs | 60000‑69999 personnalisés | Conventions internes |
+| Dates | JJ/MM/AA (+ HH:MM si critique) | Date_and_Report_Standards.md |
+| Régions | Template FROMM (#region) | Analyzer_Rules.md |
+| Labels | Français + Lbl | Analyzer_Rules.md |
+| Performances | SP-1712 (clés / SetRange) | SP-1712_Methodology.md |
+
+## 🧱 Mapping Objets 50xxx ➜ 60xxx (Rappel)
+Toujours citer: `AncienID ➜ NouvelID - Type Nom`. Ex: `50069 ➜ 60069 - Report Commercial Invoice FROMMFR0`.
+En cas de fusion: `50069,50021 ➜ 60090`. Objets supprimés: marquer `(supprimé)`.
+
+### 📤 Table synchronisée depuis Plan de Test (v0.2.1)
+Source: `app\docs\Plan de test\Plan_de_Test_Commercial.md` – section « Table de Correspondance Objets Personnalisés ».
+
+<!-- MAPPING_TABLE_START -->
+| Ancien_Nos | Nouveau_No | Type | Nom (BC26) | Domaine | Relié Cas Test | Statut Migration | Commentaire |
+|------------|------------|------|------------|---------|----------------|------------------|-------------|
+| 50069 | 60069 | Report | Commercial Invoice FROMM | Ventes/Reports | REP-CMP-INV | ✔ | Layout normalisé |
+| 50021 | 60021 | Report | Proforma Invoice FROMM | Ventes/Reports | REP-CMP-INV | ✔ |  |
+| 50060 | 60060 | Report | Évaluation Stock FROMM | Stock/Stats | STAT-STK-FROMM | ☐ | À revalider valeurs |
+| 50017 | 60017 | Codeunit | Sales Posting Ext FROMM | Ventes | SLS-FLOW-01 | ✔ | Copie groupes TVA |
+| 50022 | 60022 | Table | Historique notation client | Client | CUST-CL-HIST | ☐ | Plus utilisé (vérifier purge) |
+| 50040 | 60040 | Table | Missing Information | Client | CUST-SYNC | ✔ | Contrôle champs obligatoires |
+| 50041 | 60041 | Table | Fonction professionnelle | Fournisseur | VEND-PRT | ✔ | Groupe prêts dépendances |
+| 50069,50021 | 60090 | Codeunit | Export Fromm Holding Dispatcher | Achats | PUR-EXP / PUR-CCA-CALC | ☐ | Exemple fusion (à confirmer) |
+| 50000 | 60000 | Page | Feuille commentaire | Ventes | SLS-COMM-CMT | ✔ | Commentaires affichés |
+| 50032 | 60032 | Page | Feuille commentaire Livraison | Ventes | SLS-COMM-CMT | ✔ | Livraison BL |
+| (liste à compléter) |  |  |  |  |  |  |  |
+<!-- MAPPING_TABLE_END -->
+
+NOTE: Toute mise à jour de cette table doit être répercutée dans le plan de test puis « pull » ici (ajout entrée + statut). Utiliser mêmes colonnes.
+
+## 🔒 Règles Critiques
+| Interdiction | Action |
+|--------------|--------|
+| `&&` PowerShell | Séparer ou `;` |
+| Modifier IDs sans validation | Demander validation métier |
+| `this` en AL | Retirer (utiliser variable) |
+| Supprimer procédure utilisée | Rechercher références avant |
+
+## ✔️ Processus Qualité (Pipeline)
+1. Normalisation (Ctrl+Alt+F) + analyzers.
+2. Build + tests.
+3. Mapping objets mis à jour.
+4. Docs synchronisées (Prompt.md / COP / Standards).
+5. Plan de test + journal anomalies.
+6. KPI mise à jour.
+
+## 👥 Interlocuteurs (Rôle Mémo)
+Léa (Achats/Articles), Valèrie (Direction Admin), Nathalie (Compta), Marc (Export), Mélanie (ADV).
+
+## 📑 Références Clés
+| Sujet | Fichier |
+|-------|---------|
+| Plan de test | app/docs/"Plan de test"/Plan_de_Test_Commercial.md |
+| Standards code | app/docs/Standards/FROMM_Coding_Standards.md |
+| Analyzers | app/docs/Standards/Analyzer_Rules.md |
+| Dates & Reports | app/docs/Standards/Date_and_Report_Standards.md |
+| Performance | app/docs/Performance/SP-1712_Methodology.md |
+| Snippets | app/docs/Guides/GUIDE_SNIPPETS_FROMM.md |
+| Traçabilité prompts | COP/README.md |
+| Historique prompts | Prompt.md |
+
+## 🧪 Snippets
+Voir `app/docs/Guides/GUIDE_SNIPPETS_FROMM.md`.
+
+## 🛑 Quotas
+Copilot : surveiller barre VS Code; quota épuisé → mode suggestions basiques.
+
+---
+## (Fin du fichier – annexe historique supprimée, se référer au contrôle de version Git pour l'historique complet)
+- Performance SP-1712 : `app\docs\Performance\SP-1712_Methodology.md`
+
+### Ressources Techniques
+- Report Extensions Templates : `app\src\ReportExtension\`
+- Layouts RDLC : `app\src\Report\layout\`
+- Scripts de génération : `app\scripts\`
+
+### Documents de référence créés :
+- `app\docs\Migration\feuille_de_route_pages_restructuree.md` : Feuille de route restructurée et vérifiée
+- `app\docs\Migration\Documentation_Technique_Migration_FROMM.md` : Document technique client
+- `Prompt.md` : Historique chronologique de tous les prompts du projet
+
+### Processus de validation établi :
+- Vérification systématique à 100% de la cohérence code/documentation
+- Correction automatique des inexactitudes documentaires
+- Ton modeste et prudent dans toute documentation
+- Validation factuelle sans expressions excessives
+
+## Outils et extensions
+
+L'extension fromm-extension est un outil interne développé pour faciliter le travail de migration : automatisation de tâches répétitives, génération de rapports, assistance à la reprise des données et à la conversion des objets AL. Elle n'est pas le cœur du projet mais un support technique pour accélérer et fiabiliser la migration.
+
+### 🚀 **Commande principale** : `Ctrl+Alt+F`
+Applique automatiquement TOUS les standards FROMM sur le fichier AL ouvert.
+
+### 📊 **Règles CodeCop intégrées** (100% validées) :
+
+#### **CodeCop (AA) - Règles principales**
+- **AA0001** : Il doit y avoir exactement un espace après ';'
+- **AA0002** : Il ne doit pas y avoir d'espace avant ';'
+- **AA0003** : Il doit y avoir exactement un espace avant et après '='
+- **AA0005** : Supprime BEGIN..END inutiles (une seule instruction)
+- **AA0008** : Ajoute parenthèses manquantes aux appels de méthodes
+- **AA0013** : Les parenthèses ne doivent être utilisées que pour clarifier la priorité
+- **AA0040** : Les dimensions doivent avoir une propriété Caption
+- **AA0072** : Le nom de la variable doit avoir un préfixe
+- **AA0073** : Le nom de la variable doit avoir un suffixe
+- **AA0074** : Renomme labels avec préfixe Lbl
+- **AA0100** : Structure des régions FROMM (automatique via extension)
+- **AA0100EndRegion** : Complète le nom des #endregion avec le nom #region correspondant
+- **AA0175** : Seuls les types de données primitifs peuvent être utilisés pour les paramètres de fonction
+- **AA0217** : Remplace StrSubstNo littéraux par des labels
+- **AA0225** : Les variables doivent avoir une valeur ou être initialisées
+- **AA0232** : Seules les variables d'écriture peuvent être transmises par référence aux procédures
+- **AA0237** : Le nom de la procédure doit être en anglais
+- **AA0470** : Suppression des pragma et warning spécifiques (protection auto)
+
+#### **UICop (AW) - Interface utilisateur**
+- **AW0001** : Le champ doit avoir une propriété ToolTip
+- **AW0002** : La page doit avoir un titre usable
+- **AW0004** : Une page d'actions doit avoir un titre usable
+- **AW0005** : Les actions doivent avoir une propriété caption
+- **AW0006** : Les groupes de pages doivent avoir une propriété caption
+- **AW0009** : Les contrôles doivent avoir une propriété ApplicationArea
+- **AW0010** : Éviter les caractères non standard dans les captions
+- **AW0011** : Utiliser ApplicationArea sur les pages
+
+#### **PerTenantExtensionCop (PTE) - Extensions**
+- **PTE0001** : Un objet de type 'table' avec l'ID X ne peut pas être publié
+- **PTE0002** : Un objet de type 'page' ne peut pas étendre un autre objet
+- **PTE0003** : Les fonctions ne doivent pas abonner aux événements dans la même extension
+- **PTE0004** : Les procédures du type Table ne doivent pas être external
+- **PTE0005** : Les propriétés d'objet ne doivent pas être modifiées dans une extension
+- **PTE0006** : Une procédure 'OnDelete' ne doit pas être déclarée dans une TableExtension
+- **PTE0007** : Une procédure 'OnInsert' ne doit pas être déclarée dans une TableExtension
+- **PTE0008** : Une procédure 'OnModify' ne doit pas être déclarée dans une TableExtension
+- **PTE0009** : Une procédure 'OnRename' ne doit pas être déclarée dans une TableExtension
+
+#### **AppSourceCop (AS) - Validation AppSource**
+- **AS0001** : Les tables et extensions de table doivent avoir une propriété DataClassification
+- **AS0002** : Les champs doivent avoir une propriété DataClassification
+- **AS0003** : Les procédures obsolètes ne doivent pas être utilisées
+- **AS0004** : Les éléments obsolètes ne doivent pas être référencés
+- **AS0011** : Un objet de référence ne peut pas être supprimé
+- **AS0013** : Un champ ne peut pas être supprimé
+- **AS0014** : Les propriétés d'un objet ne peuvent pas être changées
+- **AS0015** : Une procédure ne peut pas être supprimée
+- **AS0016** : Une procédure ne peut pas être modifiée
+
+#### **Règles spécifiques FROMM France**
+- **FROMM001** : Protection contre les corruptions du formatage automatique (extension)
+- **AB0999** : Gestion de la documentation d'en-tête FROMM standardisée
+- **Suffixe obligatoire** : Tous les objets doivent avoir le suffixe " FR0"
+- **Préfixe variables** : Rec, Cdu, Pag selon le type d'objet
+- **Labels français** : Tous les labels en français avec suffixe Lbl
+- **Commentaires XML** : /// <summary> obligatoires sur toutes les procédures
+- **Régions standardisées** : #region selon template FROMM
+
+### 🛠️ **Installation et utilisation** :
+```powershell
+# Installation automatique
+.\app\fromm-extension\build-and-install.ps1
+```
+
+**Utilisation recommandée** : Appuyer sur `Ctrl+Alt+F` dans tout fichier AL pour normalisation automatique selon standards FROMM.
+
+### 🎯 **Dernières évolutions (15 août 2025 - Après-midi)** :
+- **URGENCE RÉSOLUE** : Corruption DraftRecapitulationFR0.Report.al par extension → fichier restauré fonctionnel
+- **API Modernisée** : ExportGLEntriesTaxFR0.Report.al migré File→TempBlob (compatibilité extension)
+- **Architecture Extension** : Modularité aa/, aw/, pte/, as/, fromm/ opérationnelle
+- **Debug AA0470** : Règle PageNo protection contre pragma corrompant la syntaxe
+- **Protection formatage** : Règle FROMM001 renforcée contre corruptions automatiques
+- **47 Reports Commerciaux** : Migration DELTA→AL complétée avec 26 corrections appliquées
+
+## Principes techniques
+
+- Remplacer le code spécifique par du code standard chaque fois que possible.
+- Réutiliser le code existant avant de créer de nouvelles fonctions.
+- Chaque fois qu'une anomalie apparait plusieurs fois, avoir des propositions d'évolutions sur fromm-extension.
+- Plus nous avançons sur le projet plus tu es performant sur les corrections.
+- Chaque amélioration validée devient un mode de fonctionnement semi-automatique.
+- Tu te serviras de `app\docs\Rapports\SP-1712_Synthese_Detaillee.md` (fait pour un autre client), pour optimiser les performances de tous les objets dans toutes les occasions.
+- Ajouter this n'est pas une solution AL acceptable : propose moi toujours une aurte alternative
+
+## Standards et Conventions FROMM
+
+### Nommage des Reports
+- Format: [EntityType][Action]FROMMFR0
+- Exemples: SalesInvoiceFROMMFR0, PurchaseOrderFROMMFR0
+- ID Range: 60000-69999 pour les reports personnalisés
+
+### Standards de Formatage des Dates FROMM
+
+#### Règles Obligatoires
+1. **Privilégier Date et Heure**: Afficher systématiquement date ET heure dans les documents
+2. **Format Standard**: JJ/MM/AA pour les dates courtes
+3. **Format Complet**: JJ/MM/AA HH:MM pour la traçabilité complète
+
+#### Code AL Standardisé
+```al
+var
+    DocumentDateText: Text;        // Format JJ/MM/AA
+    DocumentDateTimeText: Text;    // Format JJ/MM/AA HH:MM
+    CurrentDateTimeText: Text;     // Timestamp de génération
+
+trigger OnAfterGetRecord()
+begin
+    // Date du document (JJ/MM/AA)
+    DocumentDateText := Format("Document Date", 0, '<Day,2>/<Month,2>/<Year,2>');
+    
+    // Date et heure complète (JJ/MM/AA HH:MM)
+    DocumentDateTimeText := Format("Document Date", 0, '<Day,2>/<Month,2>/<Year,2> <Hours24,2>:<Minutes,2>');
+    
+    // Timestamp de génération
+    CurrentDateTimeText := Format(CurrentDateTime, 0, '<Day,2>/<Month,2>/<Year,2> <Hours24,2>:<Minutes,2>');
+end;
+```
+
+#### Variables Standardisées par Type de Date
+- **DocumentDateTimeText**: Documents critiques (factures, commandes)
+- **PostingDateText**: Dates de comptabilisation
+- **DueDateText**: Dates d'échéance
+- **ShipmentDateTimeText**: Dates d'expédition avec heure
+- **CurrentDateTimeText**: Timestamp de génération
+
+#### Checklist Validation Dates
+- [ ] Format JJ/MM/AA respecté
+- [ ] Date + Heure pour documents critiques
+- [ ] Timestamp génération présent
+- [ ] Cohérence visuelle layouts RDLC
+- [ ] Tests dates limites (01/01, 31/12)
+
+### Architecture Reports
+
+#### Reports Spécifiques vs Report Extensions
+- **Score < 50%**: Créer Report Extension
+- **Score ≥ 50%**: Maintenir Report Spécifique
+- **Critères**: Complexité modifications NAV 13 → BC 26
+
+#### Template Report Extension
+```al
+reportextension 60XXX "Report Name FR0" extends "Standard BC Report"
+{
+    dataset
+    {
+        modify("Main DataItem")
+        {
+            column(CompanyNameFR; CompanyNameText) { }
+            column(DocumentDateFR; DocumentDateTimeText) { }
+        }
+    }
+}
+```
+
+## Standards et organisation
+
+- Utilisation systématique des régions (#region / #endregion) pour structurer chaque objet AL :
+  - Global Variables and Constants
+  - Public Functions
+  - Private Functions
+  - Event Management
+- En-tête documentaire standardisé en début de chaque fichier AL (description, responsabilités, organisation du code, auteur, date, version).
+- Ajout de commentaires XML /// <summary> sur chaque procédure publique et privée.
+- Respect des conventions de nommage FROMM (variables, procédures, labels).
+- Application des règles CodeCop Analyzer spécifiques au projet (ex : AA0008, parenthèses sur appels sans paramètre).
+- **Optimisations SP-1712 systématiques :** SetCurrentKey et ordre des filtres sur tous les reports.
+
+## Contraintes et attentes
+
+- Tous les objets AL doivent être conformes au standard documentaire et structurel.
+- Les corrections automatiques doivent être robustes et exhaustives (aucun oubli sur les parenthèses, les régions, etc.).
+- Les modifications doivent être traçables et documentées (Prompt.md, copilot-context.txt).
+- L'extension doit fonctionner sur tout le projet, pas seulement sur fromm-extension.
+- **Véracité absolue :** Aucune fausse information dans la documentation, vérification systématique contre l'état réel du code.
+
+## Bonnes pratiques
+
+- ✅ **Tester les corrections sur des objets réels** (validation effectuée sur CalculateDeprecStatFR0.Report.al et autres).
+- ✅ **Extension fromm-extension opérationnelle** : Utiliser Ctrl+Alt+F pour normaliser automatiquement tout fichier AL.
+- ✅ **Documentation vérifiée à 100%** : Correspondance parfaite entre documentation et code réel.
+- Mettre à jour le contexte et la documentation à chaque évolution majeure.
+- **Restructuration documentaire :** Matrice + chapitre par objet avec sections Avant/Après.
+
+## Références
+
+- Standards FROMM France (voir README.md et en-têtes des fichiers AL)
+- Fichier de contexte projet global : BC_FROMM\copilot-context.txt
+- Fichier de contexte fromm-extension/copilot-context.txt (pour l'extension)
+- Historique des prompts : BC_FROMM\Prompt.md
+- Documentation migration : app\docs\Migration\
+- Synthése migration statistiques : BC_FROMM\app\docs\Migration\Documentation_Technique_Migration_FROMM.md et app\docs\Migration\feuille_de_route_pages_restructuree.md
+- Synthése migration des reports commerciaux : app\docs\Migration\Feuille_Route_Reports_Commerciaux.md (MAJ 15/08/2025)
+
+## Processus de validation des évolutions
+
+- Toute amélioration ou correction doit être testée sur un ou plusieurs objets réels.
+- La documentation (copilot-context.txt, Prompt.md) doit être mise à jour à chaque évolution majeure.
+- Les évolutions validées sont intégrées dans l'extension et communiquées à l'équipe.
+- **Vérification 100% obligatoire :** Chaque information documentée doit correspondre exactement à l'état réel du code.
+
+## Interlocuteurs chez FROMM France
+
+Léa : Achats et articles
+Valèrie : Directrice Admin
+Nathalie : Compta
+Marc : Export
+Mélanie : ADV
+
+## Communication avec les développeurs
+
+Propose des dictons de développeur amusant de temps en temps du type : "Tester c'est douter".
+Propose par étape, des informations pour m'aider à monter en compétence.
+Tiens moi informé de toutes informations importantes relatives à Business Central : principalement le technique.
+
+## 🚨 ERREURS CRITIQUES À NE JAMAIS REPRODUIRE
+
+### **PowerShell - Syntaxe Obligatoire**
+- ❌ **JAMAIS de && dans les commandes PowerShell**
+- ✅ **TOUJOURS séparer les commandes** : cd puis npm run compile
+- ❌ **JAMAIS "cd path && command"** → Erreur garantie
+- ✅ **TOUJOURS "cd path" puis "command" en séparé**
+
+#### **❌ Exemples INTERDITS :**
+```powershell
+# ERREUR - Ne jamais faire cela
+cd "e:\GIT\FROMM France\BC_FROMM\app\fromm-extension" && npm run compile
+cd path && command
+```
+
+#### **✅ Syntaxe CORRECTE :**
+```powershell
+# CORRECT - Toujours séparer
+cd "e:\GIT\FROMM France\BC_FROMM\app\fromm-extension"
+npm run compile
+
+# Ou utiliser ; pour PowerShell
+cd "path"; command
+```
+
+#### **🎯 Règle Absolue :**
+**PowerShell ≠ Bash/Linux** : L'opérateur `&&` n'existe pas en PowerShell natif. Utiliser `;` ou séparer les commandes.
+
+### **Autres Erreurs Critiques**
+- ❌ **JAMAIS** modifier des IDs d'objets sans validation métier
+- ❌ **JAMAIS** supprimer des procédures utilisées sans analyse d'impact
+- ❌ **JAMAIS** utiliser `this` en AL (non supporté)
+- ✅ **TOUJOURS** tester les corrections sur objets réels avant validation
+
+## Quota et Limitations GitHub Copilot
+
+#### ✅ **Vérifications :**
+- Vérifier le statut dans la barre d'état VS Code
+- Contrôler l'usage via l'interface Copilot
+- S'assurer que le quota n'est pas épuisé
+
+#### 🔧 **Conséquences si quota épuisé :**
+- **Perte des corrections automatiques** (fonctionnalité premium)
+- Mode dégradé jusqu'au reset mensuel
+- Seules les suggestions basiques restent actives
+
+---
+
+Ce fichier sert de référence pour Copilot et tout outil d'automatisation afin de garantir l'uniformité et la qualité sur l'ensemble du projet BC_FROMM.
+
+**Version :** 15 août 2025 15:45 - Post-correction extension + Reports fonctionnels
+
+# À retenir : Formation et utilisation des snippets FROMM
+
+Il est fortement recommandé d'apprendre à se servir des snippets FROMM France pour accélérer et standardiser le développement AL.
+Se référer au guide "GUIDE_SNIPPETS_FROMM.md" (app\docs\Guides) pour :
+- Installation et activation des snippets dans VS Code
+- Liste des principaux snippets et leur usage
+- Bonnes pratiques et workflow d'application des standards
+- Raccourcis utiles et conseils de productivité
+
+L'intégration régulière des snippets dans le workflow garantit la cohérence, la qualité et la maintenance du code selon les standards FROMM.
+
+Synchroniser et mettre à jour ce contexte à chaque évolution du guide des snippets.
+
+// ================================================================================
+// FROMM France - Business Central Extension
+// Module: Order Confirmation Report FR0
+// Description: Rapport de confirmation de commande de vente avec personnalisations FROMM France
+// Version: 2.0.0
+// Date: 21/08/25  ← FORMAT FROMM (JJ/MM/AA)
+// Author: Équipe Développement FROMM France
+// ================================================================================
+

@@ -1,0 +1,52 @@
+﻿# ðŸ“˜ CONTEXTE COPILOT (ModÃ¨le RÃ©utilisable)
+
+Version: 0.1.0 (Template)
+
+## ðŸŽ¯ Vision & Objectifs
+DÃ©crire briÃ¨vement l'objectif principal du projet.
+
+## ðŸš¦ Phases
+- Initialisation
+- Construction
+- Stabilisation
+- Tests
+- Livraison
+
+## ðŸ§­ Gouvernance (SynthÃ¨se)
+- TraÃ§abilitÃ© via ID unique PROMPT-YYYYMMDD-HHMM-NN
+- Summary pendant / Result Ã  la clÃ´ture
+- Contexte mis Ã  jour si rÃ¨gles changent
+
+## ðŸ›  Outils ClÃ©s (Adapter)
+- IDE / Extensions
+- Scripts d'automatisation
+
+## ðŸ“ Standards (RÃ©sumÃ©)
+| Domaine | RÃ¨gle | Source |
+|---------|-------|--------|
+| Nommage objets | Suffixe projet | Standards internes |
+| IDs | Plage dÃ©diÃ©e | Standards internes |
+| Dates | JJ/MM/AA HH:MM | Date Standards |
+
+## ðŸ”’ RÃ¨gles Critiques
+| Interdiction | Action |
+|--------------|--------|
+| Suppression prompt sans archivage | Marquer (ArchivÃ©) |
+| Modification ID | Interdit |
+
+## âœ”ï¸ Processus QualitÃ©
+1. Normalisation
+2. Build + Tests
+3. Docs synchro
+4. Journal anomalies
+5. KPI
+
+## ðŸ“‘ RÃ©fÃ©rences ClÃ©s
+| Sujet | Fichier |
+|-------|---------|
+| Historique prompts | Prompt.md |
+| TraÃ§abilitÃ© | COP/README.md |
+| Scripts | Scripts/*.ps1 |
+
+
+
