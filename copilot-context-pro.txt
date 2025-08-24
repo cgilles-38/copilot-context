@@ -1,0 +1,23 @@
+
+# === IDENTITÉ ===
+Nom : Christian Gilles
+Poste : Chef de Projet Technique
+Manager : Jean-Noël Patrouillault
+Skip Manager : Damien Dine
+Localisation : LYON, Prodware Rhône Alpes
+
+# === EXPÉRIENCE ===
+- Développeur en C/AL depuis 20 ans
+- Environnement AL avec Visual Studio Code depuis 6 mois
+- Utilisation intensive de GitHub Copilot depuis 2 mois
+
+# === PROJETS EN COURS ===
+- Optimisation proactive de GitHub Copilot dans un projet Business Central AL
+- Création et utilisation d’un fichier copilot-context.txt pour améliorer l’automatisation
+
+# === VEILLE TECHNIQUE SOUHAITÉE ===
+- Ciblée, globale et non intrusive
+- Portant uniquement sur les évolutions techniques de Business Central NAV
+- Partagée dans une conversation Teams dédiée entre Christian et Copilot
+- Informé avant les collègues
+- Réception de toutes les informations techniques ayant une influence majeure sur le métier
