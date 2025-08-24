@@ -461,3 +461,193 @@ Synchroniser et mettre à jour ce contexte à chaque évolution du guide des sni
 // Author: Équipe Développement FROMM France
 // ================================================================================
 
+## Extension FROMM – Détails Techniques
+# 📘 GitHub Copilot C- ✅ **Nom de l'app** : Fromm-extension (Version 1.1.2 - Production Ready)
+- ✅ **Analyzers opérationnels** : CodeCop (4 règles), UICop, PerTenantExtensionCop
+- ✅ **Structure validée** : dossier `app` avec sous-dossier `fromm-extension`
+- ✅ **Distribution autonome** : Pas de dépendance externe, package VSIX complet
+- ✅ **Script d'installation** : "build-and-install.ps1" automatisé et fonctionnel
+- ✅ **Tests complets** : Système de validation autonome intégré (AutoTestCodeCop.ts)
+- ✅ **Mission accomplie** : Extension finalisée et validée à 100% File pour le sous-projet fromm-extension
+
+## 🧭 Objectif du projet
+Développer une extension qui aide les développeurs Business Central travaillant sur le projet à normaliser leur code AL.
+Cette extension n'est qu'un outil VS Code et ne sera pas déployée sur Business Central.
+L'extension est réalisée par la Société Prodware par Christian GILLES (Responsable technique) pour le compte du client Fromm France. L'extension et les droits de propriété doivent stipuler cette appartenance.
+
+## 📦 Objets à créer
+- ✅ **Fonction principale** : "Analyser et corriger la structure actuelle" (Ctrl+Alt+F)
+- ✅ **CodeCop System** : 4 règles automatiques intégrées (AA0005, AA0008, AA0074, AA0217)
+- ✅ **Tests autonomes** : Système de validation automatique complet
+- ✅ **Messages d'état** : Début et fin de traitement avec gestion d'affichage exclusive
+- ✅ **Package distribution** : fromm-standards-1.1.2.vsix prêt pour déploiement
+
+## ⚙️ Contraintes techniques
+- L'outil a été bâti en langage TypeScript
+- Le projet a était factorisé 
+- A l'ouverture du projet global (en workspace ou en folder), si l'extension fromm-extension est active, le readme de Fromm-extension doit se lancer. Une case à cocher permet de masquer au prochain démarrage. Il indique la propriété intellectuel à Prodware.
+- Le fichier Read-me de fromm-extension est mis à jour à chaque gros avancement.
+- Version cible : outil lancé sur des objets Business Central 26.0
+- Nom de l’app : Fromm-extension
+- Utilisation des analyzers : CodeCop, UICop, PerTenantExtensionCop
+- Structure du projet : dossier `app` avec sous-dossier `fromm-extension`
+- Pas de dépendance externe ou script de déploiement automatique
+- Un script PowerShell "build-and-install.ps1" permet d'automatiser la livraison
+- La mission est terminée uniquement si je valide les tests. Sinon la demande reste ouverte et en cours.
+- Quand tu me demandes d'intervenir sur un fichier, il doit y avoir le nom et l'emplacement du fichier.
+- Un paramétrage permet de définir le répertoire de travaille.
+- Pour toutes modification importante tu commenceras par proposer la création d'une branche.
+
+## 🚫 Éléments à éviter
+- Si des scripts PowerShell sont créés pour analyse ou test, ils doivent être supprimés automatiquement quand l'objectif est atteint.
+- Ne pas créer de nouvelle app ou fichier `app.json`
+- Ne pas modifier le fichier `launch.json`
+- Ne pas proposer de logique de CI/CD ou de packaging
+- Dans les commandes de type "cd "e:\GIT\FROMM France\BC_FROMM\app\fromm-extension" && npm run compile" ne pas utiliser "&&" qui génére l'erreur : "Au caractère Ligne:1 : 55
++ cd "e:\GIT\FROMM France\BC_FROMM\app\fromm-extension" && npm run comp ...
++                                                       ~~
+Le jeton « && » n’est pas un séparateur d’instruction valide.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : InvalidEndOfLine"
+- si des fichiers `.ps1`, `.bat`, ou `.sh` sont créés pour analyse ou test, ils doivent être supprimés automatiquement quand l'objectif est atteint.
+
+## ✅ Ce que je veux
+- Obtenir le fonctionnement de base attendu 
+- Des tests de bases doivent être effectués au moment de la compilation pour garantir le fonctionnement essentiel.
+- Pouvoir importer de nouvelles règles à partir d’un fichier .md ou de retirer les idées du fichier. Je veux pouvoir transformer les nouvelles règles en programme d’aide au développeur.
+- Code clair, commenté, et prêt à être intégré dans le projet existant
+- Réponses en Français uniquement
+- Les objets AL doivent suivre la norme utilisée sur "BC_FROMM\app\src\CodeUnit\AdvancedDistribMgtFR0.Codeunit.al" ou sur "BC_FROMM\app\src\TableExtension\SalesHeaderFR0.TableExt.al".
+
+## 📁 Structure du projet
+- `app/fromm-extension/docs` : contient les documents du projet
+- `scripts/` : contient des outils manuels (non utilisés par Copilot) du projet global
+- `test/` : contient les tests AL du projet global
+- build-and-install.ps1 à la racine du projet compile, test et installe l'app.
+- copilot-context.txt : est un fichier pour la communication avec copilot l doit être conservé dans toutes les versions.
+- Prompt.md sert de mémoire entre copilot et moi pour se souvenir de nos échanges clés. Il ne doit pas être supprimé. (FROMM France\BC_FROMM\Prompt.md)
+- 'app/fromm-extension/src/services/ALAnalyzer.ts est un fichier clé du projet. Il doit être manipulé avec prudence.
+- Le readme de référence du projet est stocké dans "FROMM France\BC_FROMM\app\fromm-extension\README.md".
+
+
+## 🧪 Exemple de prompt efficace
+```al
+// Copilot : 
+<Profil>
+Tu es un expert en projet TypeScript. Tu as également des compétences élevées en langage AL. 
+<Profil>
+<Contraintes>
+Prends le temps de mener une expertise fine et donnes seulement des réponses dont tu es certains à 100%. 
+Tu dois reconstruire l’application fromm-extension fonctionnelle.
+<Contraintes>
+<EtatDesLieux>
+L’extension dispose d’une commande palette pour ajouter dynamiquement des règles CodeCop, avec documentation claire et suppression aisée.
+L’affichage des messages d’analyse est désormais cohérent : le message de début s’affiche dans la barre de statut et disparaît avant le message de fin.
+L’ordre des corrections (régions, en-tête, contenu, formatage) a été fiabilisé pour garantir la robustesse de l’outil.
+Le module de test interne (FROMMTests) existe mais son état fonctionnel doit être vérifié à chaque évolution majeure.
+Le projet a été refactorisé, les anciennes tentatives sont désormais archivées ou supprimées pour garantir un seul jeu de fichiers cohérents.
+</EtatDesLieux>
+<Mission>
+Tu es missionné pour reprendre une application « Fromm-extension » afin de solder la reconstruction de l’application Fromm-extension.
+La mission prioritaire est : faire marcher les fonctions d’analyse et de standardisation en priorité, puis réintégrer progressivement les autres fonctions, avec sauvegarde à chaque étape.
+Un seul jeu de fichiers cohérents et homogènes doit être maintenu dans le répertoire Fromm-extension.
+</Mission>
+<Tests>
+Le répertoire test est stocké : "BC_FROMM\app\fromm-extension\src\test".
+Je veux des jeux de tests non intrusif. Donc tu fais un script PowerShell qui crée un objet de test. A la validation du test tu supprimes les objets utiisés pour les
+</Tests>
+
+## 🧨 Historique des tentatives
+- ✅ **Mission accomplie** : Extension FROMM Standards v1.1.2 finalisée
+- ✅ **Système CodeCop** : 4 règles opérationnelles (AA0005, AA0008, AA0074, AA0217)
+- ✅ **Tests autonomes** : Système de validation automatique intégré
+- ✅ **Fusion réussie** : Branche feature/codecoprules fusionnée dans CHGI
+- ✅ **Package validé** : fromm-standards-1.1.2.vsix prêt pour distribution
+- Tentative 1 : perte du déclenchement automatique du ReadMe (résolu)
+- Refonte en supprimant l'interface graphique et en gardant Ctrl+Alt+F comme analyse et correction (finalisé)
+- Ajout de CodeCop à traiter comme de nouvelles règles (implémenté et validé)
+
+## 🎯 État Actuel (V1.1.2)
+- **Fonctionnalité principale** : ✅ Opérationnelle (Ctrl+Alt+F)
+- **Règles CodeCop** : ✅ 4/4 règles fonctionnelles (100%)
+- **Tests automatiques** : ✅ Validation en temps réel (< 15ms)
+- **Package distribution** : ✅ Prêt et validé
+- **Documentation** : ✅ À jour et complète
+- **Système de test autonome** : `AutoTestCodeCop.ts` dans `src/test/`
+
+## 📋 Réponses attendues
+- Code uniquement, sans explication inutile
+- Commentaires dans le code pour chaque bloc fonctionnel
+- Pas de proposition de fichiers ou scripts hors périmètre
+
+## Communication avec les développeurs
+Propose des dictons de développeur amusant de temps en temps, pas à chaque itération.
+Propose par étape, des informations pour m'aider à monter en compétence de temps en temps.
+Tiens moi informé de toutes informations importantes relatives à Business Central : principalement le technique.
+
+## Projet AUXIGA Classic – Contexte Technique
+# 📘 Contexte Projet – Auxiga Classic
+
+## 🏷️ Informations Générales
+- **Nom de l’app** : Auxiga Classic
+- **Client** : Auxiga
+- **Langage principal** : C/AL 
+- **Cible** : Développement d’objets C/AL BC 14
+- **Structure** : Organisation par dossiers (Codeunit, Table, Page, Report, Xmlport, etc.)
+
+## 🧭 Objectif
+Développer, maintenir et standardiser les objets C/AL du projet Auxiga afin de répondre aux besoins métiers du client, tout en respectant les normes de développement Business Central et en préparant les objets au passage en version BC26.
+
+## 📦 Fonctionnalités principales
+- Création et maintenance d’objets C/AL (Codeunit, Table, Page, Report, etc.)
+- Respect des standards de nommage et de structuration C/AL
+- Documentation technique et fonctionnelle associée
+- Scripts d’automatisation pour le build, le nettoyage et l’import d’objets
+
+## ⚙️ Contraintes techniques
+- Les objets présents sont des objets C/AL exportés en TXT.
+- Respect des conventions C/AL utilisées dans le projet (voir objets de référence si besoin)
+- Progressivement préparer les objets pour faciliter leur passage dans les nouvelles version BC26
+- Scripts PowerShell pour automatiser certaines tâches (build, clean, import, résolution de conflits)
+- Pas de dépendance externe non validée
+- Toute modification importante doit être réalisée sur une branche dédiée
+- Documentation à jour dans les fichiers markdown du projet
+- Utiliser N° et nom des champs quand tu communiques.
+
+## 🚫 À éviter
+- Modification non justifiée de la structure des dossiers principaux
+- Ajout de dépendances ou de scripts sans validation
+- Conservation de scripts temporaires après usage
+- Modification de fichiers de configuration sans validation
+
+## 🧪 Tests
+- Les tests doivent être non-intrusifs et, si possible, automatisés
+- Nettoyage automatique des objets de test après validation
+- Validation des tests à chaque évolution majeure
+
+## 📁 Structure du projet
+- `Codeunit/` : codeunits C/AL
+- `Table/` : tables C/AL
+- `Page/` : pages C/AL
+- `Report/` : rapports C/AL
+- `Xmlport/` : xmlports C/AL
+- `Menusuite/`, `Query/` : autres objets C/AL
+- Fichiers markdown de documentation à la racine
+- Scripts PowerShell pour automatisation (`build`, `clean`, `import`, etc.)
+- `app.json` : configuration de l’application
+
+## 📋 Attentes pour Copilot
+- Réponses en français, code commenté, sans explication inutile
+- Proposer des étapes claires pour chaque intervention
+- Informer sur les points techniques importants liés à Business Central
+- Maintenir la cohérence et la propreté du code et des fichiers
+- Priorité à la robustesse et à la maintenabilité des objets AL
+
+---
+
+Ce fichier sert de base de contexte pour toute intervention sur le projet Auxiga Classic. À relire et compléter selon les spécificités et besoins du projet.
+
+> 📄 Pour la structure détaillée des documentations de livraison, voir aussi : [GUIDE_TEMPLATE_DOCUMENTATION.md](./Docs/GUIDE_TEMPLATE_DOCUMENTATION.md)
+
+> ℹ️ Les évolutions majeures et décisions structurantes sont consignées dans [Prompt.txt](./Prompt.txt). Ce fichier est mis à jour à chaque changement de standard ou de fonctionnement.
+
