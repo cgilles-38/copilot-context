@@ -651,3 +651,124 @@ Ce fichier sert de base de contexte pour toute intervention sur le projet Auxiga
 
 > ℹ️ Les évolutions majeures et décisions structurantes sont consignées dans [Prompt.txt](./Prompt.txt). Ce fichier est mis à jour à chaque changement de standard ou de fonctionnement.
 
+---
+## Projet ANTEMETA – Paramétrage PDE BC26
+
+### 🏷️ Synthèse Express
+Installation, paramétrage et synchronisation du module PDE (Production Data Exchange) sur l'environnement Business Central 26 (Production) du client Antemeta, avec préparation du plan de bascule Go Live (janvier) et validation des duplications de sociétés.
+
+### 🎯 Objectifs Prioritaires
+| Priorité | Objectif | Délai cible | Indicateur réussite |
+|----------|----------|------------|---------------------|
+| Haute | Installation fiable PDE sur serveur SRVAAPDE01 | Fait | SelfCheck OK / aucun log critique |
+| Haute | Synchronisation BC ↔ PDE stable | Continu | 0 erreurs bloquantes dans journal sync sur 24h |
+| Haute | Plan de bascule Go Live janvier prêt | M-1 | Checklist validée | 
+| Moyenne | Documentation paramétrage consolidée | En cours | Page Confluence / README PDE synchronisée |
+| Moyenne | Procédure duplication société maîtrisée | Avant Go Live | Duplication + sync test OK |
+
+### 🖥️ Infrastructure / Environnements
+| Élément | Détail |
+|---------|--------|
+| Serveur PDE | SRVAAPDE01.antemeta.net (192.168.78.66) |
+| Version BC | 26 (Production) |
+| PDE Exécutable | PDEGeneric.Console |
+| Authentification | Compte de service (à préciser) |
+| Fichier config | appsettings.json (connexions BC, SQL, scheduling) |
+
+### 🔧 Commandes PDE (Référence rapide)
+```powershell
+PDEGeneric.Console --selfcheck   # Vérification intégrité & dépendances
+PDEGeneric.Console --init        # Initialisation (tables / métadonnées / seeds)
+PDEGeneric.Console --sync        # Lancement d'une synchronisation complète
+```
+Ajouter si disponible : `--dryrun`, `--status`, `--repair` (à confirmer).
+
+### ⚙️ Paramétrage appsettings.json (Checklist)
+| Section | Paramètres critiques | À vérifier |
+|---------|----------------------|-----------|
+| ConnectionStrings | BC, SQL (timeout, pooling) | ✔ |
+| Scheduling | Fréquence sync (cron / interval) | ☐ |
+| Logging | Niveau (Info / Warn / Error) + rotation | ☐ |
+| FeatureFlags | Activation modules optionnels | ☐ |
+| RetryPolicy | Backoff exponentiel / max retries | ☐ |
+
+### 🔄 Flux de Synchronisation (Vue Haute)
+1. Extraction données BC (staging PDE)
+2. Normalisation / transformation (mapping champs)
+3. Insertion/Update PDE
+4. Journalisation (succès/erreurs) + métriques
+5. Relance sur erreurs transitoires (RetryPolicy)
+
+### 🧪 Tests Réalisés / À Planifier
+| Type | Statut | Description | Prochaines actions |
+|------|--------|-------------|--------------------|
+| SelfCheck | ✔ | Environnement cohérent | Surveiller récurrence |
+| Init | ✔ | Création structures | Documenter diffs schema |
+| Sync de référence | ✔ | Première synchronisation OK | Mettre en place métriques |
+| Duplication société (sandbox) | ☐ | Cloner + vérifier isolation | Rédiger script automatisé |
+| Charge (volumétrie) | ☐ | Simulation lots massifs | Générer dataset test |
+| Reprise après incident | ☐ | Arrêt service + reprise sync | Tester cohérence delta |
+
+### 📊 Indicateurs & Monitoring (À mettre en place)
+| Indicateur | Source | Seuil Alerte |
+|------------|--------|-------------|
+| Latence sync (moyenne) | Logs PDE | >10 min |
+| Erreurs bloquantes/h | Logs PDE (Error) | >0 |
+| Erreurs transitoires réessayées | Logs PDE (Warn) | >5/h |
+| Temps init | Journal init | >5 min |
+| Taille tables staging | SQL | +20% vs baseline |
+
+### 🧭 Plan de Bascule (Draft)
+| Étape | Description | Responsable | Statut |
+|-------|-------------|-------------|--------|
+| Préparation | Valider config finale appsettings.json | Tech | En cours |
+| Geler périmètre | Congélation des modifications BC critiques | Métier | À planifier |
+| Sauvegarde | Snapshot base BC + PDE | DBA | ☐ |
+| Synchronisation finale | Exécution --sync contrôlée | Tech | ☐ |
+| Validation fonctionnelle | Vérification échantillons métiers | Métier | ☐ |
+| Go / Switch | Passage en production opérée | Direction | ☐ |
+| Post-Go Live | Surveillance renforcée 48h | Tech | ☐ |
+
+### 🚨 Risques & Mitigations
+| Risque | Impact | Prob. | Mitigation |
+|--------|--------|-------|-----------|
+| Erreurs mapping champs | Données incohérentes | M | Revue mapping + tests sandbox |
+| Latence élevée | Décalage données | M | Monitoring + optimisation index |
+| Mauvaise duplication société | Propagation erreurs | L | Script validé + check list |
+| Paramètre retry mal réglé | Boucle ou perte | L | Revue seuils avant Go Live |
+| Logs non centralisés | Diagnostic lent | M | Activer export / agrégation |
+
+### 📁 Journal Technique (à compléter)
+| Date | Action | Résultat | Suivi |
+|------|--------|----------|-------|
+| 2025-08-25 | Installation PDE | OK | Ajouter doc installation |
+| 2025-08-25 | SelfCheck | OK | Automatiser contrôle quotidien |
+| (ajouter) |  |  |  |
+
+### 🔍 Points Ouverts
+- Renseigner paramètres exacts Scheduling.
+- Confirmer stratégies de retry et logs (rotation, rétention).
+- Définir métriques d'alerte (où stocker / dashboard ?).
+- Script duplication société (automatisation + nettoyage post-test).
+- Clarifier périmètre données critiques à valider manuellement après sync.
+
+### 📘 Sections Placeholder (à détailler)
+#### Étapes techniques détaillées
+Remplacer ce bloc par le contenu `{text1}` une fois validé / structuré (format tableau + sous-sections).
+
+#### Détails techniques complémentaires
+Remplacer ce bloc par le contenu `{text2}` (config fine, mapping champs, index SQL, etc.).
+
+### ✅ Règles de Mise à Jour (Antemeta)
+1. Toute modification appsettings.json → consigner ici + horodatage.
+2. Chaque nouvelle commande PDE utilisée → référencer sous Commandes PDE.
+3. Après chaque sync majeure → ligne Journal Technique (succès/erreurs majeures).
+4. Avant Go Live → figer cette section (tag Git) + créer checklist finale.
+
+### 🤖 Usage Copilot Spécifique
+- Quand je mentionne « sync PDE », proposer commandes + contrôle logs.
+- Suggérer validation mapping avant modifications massives.
+- Rappeler plan de bascule si date < 30 jours du Go Live.
+
+---
+
