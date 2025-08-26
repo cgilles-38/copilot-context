@@ -127,648 +127,342 @@ Léa (Achats/Articles), Valèrie (Direction Admin), Nathalie (Compta), Marc (Exp
 | Sujet | Fichier |
 |-------|---------|
 | Plan de test | app/docs/"Plan de test"/Plan_de_Test_Commercial.md |
-| Standards code | app/docs/Standards/FROMM_Coding_Standards.md |
-| Analyzers | app/docs/Standards/Analyzer_Rules.md |
-| Dates & Reports | app/docs/Standards/Date_and_Report_Standards.md |
-| Performance | app/docs/Performance/SP-1712_Methodology.md |
-| Snippets | app/docs/Guides/GUIDE_SNIPPETS_FROMM.md |
-| Traçabilité prompts | COP/README.md |
-| Historique prompts | Prompt.md |
+# CONTEXTE PROFESSIONNEL – STRUCTURATION MULTI-CLIENTS
 
-## 🧪 Snippets
-Voir `app/docs/Guides/GUIDE_SNIPPETS_FROMM.md`.
+## === IDENTITÉ ===
+Nom : Christian Gilles  
+Poste : Chef de Projet Technique  
+Manager : Jean-Noël Patrouillault  
+Skip Manager : Damien Dine  
+Localisation : LYON, Prodware Rhône Alpes
 
-## 🛑 Quotas
-Copilot : surveiller barre VS Code; quota épuisé → mode suggestions basiques.
+## === EXPÉRIENCE ===
+- Développeur en C/AL depuis 20 ans
+- Environnement AL avec Visual Studio Code depuis 6 mois
+- Utilisation intensive de GitHub Copilot depuis 2 mois
 
----
-## (Fin du fichier – annexe historique supprimée, se référer au contrôle de version Git pour l'historique complet)
-- Performance SP-1712 : `app\docs\Performance\SP-1712_Methodology.md`
+## === PROJETS EN COURS (Vue Transverse) ===
+- Optimisation proactive de GitHub Copilot dans un projet Business Central AL
+- Structuration documentaire multi-clients (FROMM, AUXIGA, ANTEMETA, HYGECO DE)
+- Industrialisation des standards (extension FROMM + méthodologies réplicables)
 
-### Ressources Techniques
-- Report Extensions Templates : `app\src\ReportExtension\`
-- Layouts RDLC : `app\src\Report\layout\`
-- Scripts de génération : `app\scripts\`
-
-### Documents de référence créés :
-- `app\docs\Migration\feuille_de_route_pages_restructuree.md` : Feuille de route restructurée et vérifiée
-- `app\docs\Migration\Documentation_Technique_Migration_FROMM.md` : Document technique client
-- `Prompt.md` : Historique chronologique de tous les prompts du projet
-
-### Processus de validation établi :
-- Vérification systématique à 100% de la cohérence code/documentation
-- Correction automatique des inexactitudes documentaires
-- Ton modeste et prudent dans toute documentation
-- Validation factuelle sans expressions excessives
-
-## Outils et extensions
-
-L'extension fromm-extension est un outil interne développé pour faciliter le travail de migration : automatisation de tâches répétitives, génération de rapports, assistance à la reprise des données et à la conversion des objets AL. Elle n'est pas le cœur du projet mais un support technique pour accélérer et fiabiliser la migration.
-
-### 🚀 **Commande principale** : `Ctrl+Alt+F`
-Applique automatiquement TOUS les standards FROMM sur le fichier AL ouvert.
-
-### 📊 **Règles CodeCop intégrées** (100% validées) :
-
-#### **CodeCop (AA) - Règles principales**
-- **AA0001** : Il doit y avoir exactement un espace après ';'
-- **AA0002** : Il ne doit pas y avoir d'espace avant ';'
-- **AA0003** : Il doit y avoir exactement un espace avant et après '='
-- **AA0005** : Supprime BEGIN..END inutiles (une seule instruction)
-- **AA0008** : Ajoute parenthèses manquantes aux appels de méthodes
-- **AA0013** : Les parenthèses ne doivent être utilisées que pour clarifier la priorité
-- **AA0040** : Les dimensions doivent avoir une propriété Caption
-- **AA0072** : Le nom de la variable doit avoir un préfixe
-- **AA0073** : Le nom de la variable doit avoir un suffixe
-- **AA0074** : Renomme labels avec préfixe Lbl
-- **AA0100** : Structure des régions FROMM (automatique via extension)
-- **AA0100EndRegion** : Complète le nom des #endregion avec le nom #region correspondant
-- **AA0175** : Seuls les types de données primitifs peuvent être utilisés pour les paramètres de fonction
-- **AA0217** : Remplace StrSubstNo littéraux par des labels
-- **AA0225** : Les variables doivent avoir une valeur ou être initialisées
-- **AA0232** : Seules les variables d'écriture peuvent être transmises par référence aux procédures
-- **AA0237** : Le nom de la procédure doit être en anglais
-- **AA0470** : Suppression des pragma et warning spécifiques (protection auto)
-
-#### **UICop (AW) - Interface utilisateur**
-- **AW0001** : Le champ doit avoir une propriété ToolTip
-- **AW0002** : La page doit avoir un titre usable
-- **AW0004** : Une page d'actions doit avoir un titre usable
-- **AW0005** : Les actions doivent avoir une propriété caption
-- **AW0006** : Les groupes de pages doivent avoir une propriété caption
-- **AW0009** : Les contrôles doivent avoir une propriété ApplicationArea
-- **AW0010** : Éviter les caractères non standard dans les captions
-- **AW0011** : Utiliser ApplicationArea sur les pages
-
-#### **PerTenantExtensionCop (PTE) - Extensions**
-- **PTE0001** : Un objet de type 'table' avec l'ID X ne peut pas être publié
-- **PTE0002** : Un objet de type 'page' ne peut pas étendre un autre objet
-- **PTE0003** : Les fonctions ne doivent pas abonner aux événements dans la même extension
-- **PTE0004** : Les procédures du type Table ne doivent pas être external
-- **PTE0005** : Les propriétés d'objet ne doivent pas être modifiées dans une extension
-- **PTE0006** : Une procédure 'OnDelete' ne doit pas être déclarée dans une TableExtension
-- **PTE0007** : Une procédure 'OnInsert' ne doit pas être déclarée dans une TableExtension
-- **PTE0008** : Une procédure 'OnModify' ne doit pas être déclarée dans une TableExtension
-- **PTE0009** : Une procédure 'OnRename' ne doit pas être déclarée dans une TableExtension
-
-#### **AppSourceCop (AS) - Validation AppSource**
-- **AS0001** : Les tables et extensions de table doivent avoir une propriété DataClassification
-- **AS0002** : Les champs doivent avoir une propriété DataClassification
-- **AS0003** : Les procédures obsolètes ne doivent pas être utilisées
-- **AS0004** : Les éléments obsolètes ne doivent pas être référencés
-- **AS0011** : Un objet de référence ne peut pas être supprimé
-- **AS0013** : Un champ ne peut pas être supprimé
-- **AS0014** : Les propriétés d'un objet ne peuvent pas être changées
-- **AS0015** : Une procédure ne peut pas être supprimée
-- **AS0016** : Une procédure ne peut pas être modifiée
-
-#### **Règles spécifiques FROMM France**
-- **FROMM001** : Protection contre les corruptions du formatage automatique (extension)
-- **AB0999** : Gestion de la documentation d'en-tête FROMM standardisée
-- **Suffixe obligatoire** : Tous les objets doivent avoir le suffixe " FR0"
-- **Préfixe variables** : Rec, Cdu, Pag selon le type d'objet
-- **Labels français** : Tous les labels en français avec suffixe Lbl
-- **Commentaires XML** : /// <summary> obligatoires sur toutes les procédures
-- **Régions standardisées** : #region selon template FROMM
-
-### 🛠️ **Installation et utilisation** :
-```powershell
-# Installation automatique
-.\app\fromm-extension\build-and-install.ps1
-```
-
-**Utilisation recommandée** : Appuyer sur `Ctrl+Alt+F` dans tout fichier AL pour normalisation automatique selon standards FROMM.
-
-### 🎯 **Dernières évolutions (15 août 2025 - Après-midi)** :
-- **URGENCE RÉSOLUE** : Corruption DraftRecapitulationFR0.Report.al par extension → fichier restauré fonctionnel
-- **API Modernisée** : ExportGLEntriesTaxFR0.Report.al migré File→TempBlob (compatibilité extension)
-- **Architecture Extension** : Modularité aa/, aw/, pte/, as/, fromm/ opérationnelle
-- **Debug AA0470** : Règle PageNo protection contre pragma corrompant la syntaxe
-- **Protection formatage** : Règle FROMM001 renforcée contre corruptions automatiques
-- **47 Reports Commerciaux** : Migration DELTA→AL complétée avec 26 corrections appliquées
-
-## Principes techniques
-
-- Remplacer le code spécifique par du code standard chaque fois que possible.
-- Réutiliser le code existant avant de créer de nouvelles fonctions.
-- Chaque fois qu'une anomalie apparait plusieurs fois, avoir des propositions d'évolutions sur fromm-extension.
-- Plus nous avançons sur le projet plus tu es performant sur les corrections.
-- Chaque amélioration validée devient un mode de fonctionnement semi-automatique.
-- Tu te serviras de `app\docs\Rapports\SP-1712_Synthese_Detaillee.md` (fait pour un autre client), pour optimiser les performances de tous les objets dans toutes les occasions.
-- Ajouter this n'est pas une solution AL acceptable : propose moi toujours une aurte alternative
-
-## Standards et Conventions FROMM
-
-### Nommage des Reports
-- Format: [EntityType][Action]FROMMFR0
-- Exemples: SalesInvoiceFROMMFR0, PurchaseOrderFROMMFR0
-- ID Range: 60000-69999 pour les reports personnalisés
-
-### Standards de Formatage des Dates FROMM
-
-#### Règles Obligatoires
-1. **Privilégier Date et Heure**: Afficher systématiquement date ET heure dans les documents
-2. **Format Standard**: JJ/MM/AA pour les dates courtes
-3. **Format Complet**: JJ/MM/AA HH:MM pour la traçabilité complète
-
-#### Code AL Standardisé
-```al
-var
-    DocumentDateText: Text;        // Format JJ/MM/AA
-    DocumentDateTimeText: Text;    // Format JJ/MM/AA HH:MM
-    CurrentDateTimeText: Text;     // Timestamp de génération
-
-trigger OnAfterGetRecord()
-begin
-    // Date du document (JJ/MM/AA)
-    DocumentDateText := Format("Document Date", 0, '<Day,2>/<Month,2>/<Year,2>');
-    
-    // Date et heure complète (JJ/MM/AA HH:MM)
-    DocumentDateTimeText := Format("Document Date", 0, '<Day,2>/<Month,2>/<Year,2> <Hours24,2>:<Minutes,2>');
-    
-    // Timestamp de génération
-    CurrentDateTimeText := Format(CurrentDateTime, 0, '<Day,2>/<Month,2>/<Year,2> <Hours24,2>:<Minutes,2>');
-end;
-```
-
-#### Variables Standardisées par Type de Date
-- **DocumentDateTimeText**: Documents critiques (factures, commandes)
-- **PostingDateText**: Dates de comptabilisation
-- **DueDateText**: Dates d'échéance
-- **ShipmentDateTimeText**: Dates d'expédition avec heure
-- **CurrentDateTimeText**: Timestamp de génération
-
-#### Checklist Validation Dates
-- [ ] Format JJ/MM/AA respecté
-- [ ] Date + Heure pour documents critiques
-- [ ] Timestamp génération présent
-- [ ] Cohérence visuelle layouts RDLC
-- [ ] Tests dates limites (01/01, 31/12)
-
-### Architecture Reports
-
-#### Reports Spécifiques vs Report Extensions
-- **Score < 50%**: Créer Report Extension
-- **Score ≥ 50%**: Maintenir Report Spécifique
-- **Critères**: Complexité modifications NAV 13 → BC 26
-
-#### Template Report Extension
-```al
-reportextension 60XXX "Report Name FR0" extends "Standard BC Report"
-{
-    dataset
-    {
-        modify("Main DataItem")
-        {
-            column(CompanyNameFR; CompanyNameText) { }
-            column(DocumentDateFR; DocumentDateTimeText) { }
-        }
-    }
-}
-```
-
-## Standards et organisation
-
-- Utilisation systématique des régions (#region / #endregion) pour structurer chaque objet AL :
-  - Global Variables and Constants
-  - Public Functions
-  - Private Functions
-  - Event Management
-- En-tête documentaire standardisé en début de chaque fichier AL (description, responsabilités, organisation du code, auteur, date, version).
-- Ajout de commentaires XML /// <summary> sur chaque procédure publique et privée.
-- Respect des conventions de nommage FROMM (variables, procédures, labels).
-- Application des règles CodeCop Analyzer spécifiques au projet (ex : AA0008, parenthèses sur appels sans paramètre).
-- **Optimisations SP-1712 systématiques :** SetCurrentKey et ordre des filtres sur tous les reports.
-
-## Contraintes et attentes
-
-- Tous les objets AL doivent être conformes au standard documentaire et structurel.
-- Les corrections automatiques doivent être robustes et exhaustives (aucun oubli sur les parenthèses, les régions, etc.).
-- Les modifications doivent être traçables et documentées (Prompt.md, copilot-context.txt).
-- L'extension doit fonctionner sur tout le projet, pas seulement sur fromm-extension.
-- **Véracité absolue :** Aucune fausse information dans la documentation, vérification systématique contre l'état réel du code.
-
-## Bonnes pratiques
-
-- ✅ **Tester les corrections sur des objets réels** (validation effectuée sur CalculateDeprecStatFR0.Report.al et autres).
-- ✅ **Extension fromm-extension opérationnelle** : Utiliser Ctrl+Alt+F pour normaliser automatiquement tout fichier AL.
-- ✅ **Documentation vérifiée à 100%** : Correspondance parfaite entre documentation et code réel.
-- Mettre à jour le contexte et la documentation à chaque évolution majeure.
-- **Restructuration documentaire :** Matrice + chapitre par objet avec sections Avant/Après.
-
-## Références
-
-- Standards FROMM France (voir README.md et en-têtes des fichiers AL)
-- Fichier de contexte projet global : BC_FROMM\copilot-context.txt
-- Fichier de contexte fromm-extension/copilot-context.txt (pour l'extension)
-- Historique des prompts : BC_FROMM\Prompt.md
-- Documentation migration : app\docs\Migration\
-- Synthése migration statistiques : BC_FROMM\app\docs\Migration\Documentation_Technique_Migration_FROMM.md et app\docs\Migration\feuille_de_route_pages_restructuree.md
-- Synthése migration des reports commerciaux : app\docs\Migration\Feuille_Route_Reports_Commerciaux.md (MAJ 15/08/2025)
-
-## Processus de validation des évolutions
-
-- Toute amélioration ou correction doit être testée sur un ou plusieurs objets réels.
-- La documentation (copilot-context.txt, Prompt.md) doit être mise à jour à chaque évolution majeure.
-- Les évolutions validées sont intégrées dans l'extension et communiquées à l'équipe.
-- **Vérification 100% obligatoire :** Chaque information documentée doit correspondre exactement à l'état réel du code.
-
-## Interlocuteurs chez FROMM France
-
-Léa : Achats et articles
-Valèrie : Directrice Admin
-Nathalie : Compta
-Marc : Export
-Mélanie : ADV
-
-## Communication avec les développeurs
-
-Propose des dictons de développeur amusant de temps en temps du type : "Tester c'est douter".
-Propose par étape, des informations pour m'aider à monter en compétence.
-Tiens moi informé de toutes informations importantes relatives à Business Central : principalement le technique.
-
-## 🚨 ERREURS CRITIQUES À NE JAMAIS REPRODUIRE
-
-### **PowerShell - Syntaxe Obligatoire**
-- ❌ **JAMAIS de && dans les commandes PowerShell**
-- ✅ **TOUJOURS séparer les commandes** : cd puis npm run compile
-- ❌ **JAMAIS "cd path && command"** → Erreur garantie
-- ✅ **TOUJOURS "cd path" puis "command" en séparé**
-
-#### **❌ Exemples INTERDITS :**
-```powershell
-# ERREUR - Ne jamais faire cela
-cd "e:\GIT\FROMM France\BC_FROMM\app\fromm-extension" && npm run compile
-cd path && command
-```
-
-#### **✅ Syntaxe CORRECTE :**
-```powershell
-# CORRECT - Toujours séparer
-cd "e:\GIT\FROMM France\BC_FROMM\app\fromm-extension"
-npm run compile
-
-# Ou utiliser ; pour PowerShell
-cd "path"; command
-```
-
-#### **🎯 Règle Absolue :**
-**PowerShell ≠ Bash/Linux** : L'opérateur `&&` n'existe pas en PowerShell natif. Utiliser `;` ou séparer les commandes.
-
-### **Autres Erreurs Critiques**
-- ❌ **JAMAIS** modifier des IDs d'objets sans validation métier
-- ❌ **JAMAIS** supprimer des procédures utilisées sans analyse d'impact
-- ❌ **JAMAIS** utiliser `this` en AL (non supporté)
-- ✅ **TOUJOURS** tester les corrections sur objets réels avant validation
-
-## Quota et Limitations GitHub Copilot
-
-#### ✅ **Vérifications :**
-- Vérifier le statut dans la barre d'état VS Code
-- Contrôler l'usage via l'interface Copilot
-- S'assurer que le quota n'est pas épuisé
-
-#### 🔧 **Conséquences si quota épuisé :**
-- **Perte des corrections automatiques** (fonctionnalité premium)
-- Mode dégradé jusqu'au reset mensuel
-- Seules les suggestions basiques restent actives
+## === VEILLE TECHNIQUE SOUHAITÉE ===
+- Ciblée, globale et non intrusive
+- Portant uniquement sur les évolutions techniques Business Central NAV / BC
+- Partagée via canal dédié (Teams) entre Christian et Copilot
+- Focus : impacts performance, analyzers, packaging, pipeline, AL runtime
 
 ---
-
-Ce fichier sert de référence pour Copilot et tout outil d'automatisation afin de garantir l'uniformité et la qualité sur l'ensemble du projet BC_FROMM.
-
-**Version :** 15 août 2025 15:45 - Post-correction extension + Reports fonctionnels
-
-# À retenir : Formation et utilisation des snippets FROMM
-
-Il est fortement recommandé d'apprendre à se servir des snippets FROMM France pour accélérer et standardiser le développement AL.
-Se référer au guide "GUIDE_SNIPPETS_FROMM.md" (app\docs\Guides) pour :
-- Installation et activation des snippets dans VS Code
-- Liste des principaux snippets et leur usage
-- Bonnes pratiques et workflow d'application des standards
-- Raccourcis utiles et conseils de productivité
-
-L'intégration régulière des snippets dans le workflow garantit la cohérence, la qualité et la maintenance du code selon les standards FROMM.
-
-Synchroniser et mettre à jour ce contexte à chaque évolution du guide des snippets.
-
-// ================================================================================
-// FROMM France - Business Central Extension
-// Module: Order Confirmation Report FR0
-// Description: Rapport de confirmation de commande de vente avec personnalisations FROMM France
-// Version: 2.0.0
-// Date: 21/08/25  ← FORMAT FROMM (JJ/MM/AA)
-// Author: Équipe Développement FROMM France
-// ================================================================================
-
-## Extension FROMM – Détails Techniques
-# 📘 GitHub Copilot C- ✅ **Nom de l'app** : Fromm-extension (Version 1.1.2 - Production Ready)
-- ✅ **Analyzers opérationnels** : CodeCop (4 règles), UICop, PerTenantExtensionCop
-- ✅ **Structure validée** : dossier `app` avec sous-dossier `fromm-extension`
-- ✅ **Distribution autonome** : Pas de dépendance externe, package VSIX complet
-- ✅ **Script d'installation** : "build-and-install.ps1" automatisé et fonctionnel
-- ✅ **Tests complets** : Système de validation autonome intégré (AutoTestCodeCop.ts)
-- ✅ **Mission accomplie** : Extension finalisée et validée à 100% File pour le sous-projet fromm-extension
-
-## 🧭 Objectif du projet
-Développer une extension qui aide les développeurs Business Central travaillant sur le projet à normaliser leur code AL.
-Cette extension n'est qu'un outil VS Code et ne sera pas déployée sur Business Central.
-L'extension est réalisée par la Société Prodware par Christian GILLES (Responsable technique) pour le compte du client Fromm France. L'extension et les droits de propriété doivent stipuler cette appartenance.
-
-## 📦 Objets à créer
-- ✅ **Fonction principale** : "Analyser et corriger la structure actuelle" (Ctrl+Alt+F)
-- ✅ **CodeCop System** : 4 règles automatiques intégrées (AA0005, AA0008, AA0074, AA0217)
-- ✅ **Tests autonomes** : Système de validation automatique complet
-- ✅ **Messages d'état** : Début et fin de traitement avec gestion d'affichage exclusive
-- ✅ **Package distribution** : fromm-standards-1.1.2.vsix prêt pour déploiement
-
-## ⚙️ Contraintes techniques
-- L'outil a été bâti en langage TypeScript
-- Le projet a était factorisé 
-- A l'ouverture du projet global (en workspace ou en folder), si l'extension fromm-extension est active, le readme de Fromm-extension doit se lancer. Une case à cocher permet de masquer au prochain démarrage. Il indique la propriété intellectuel à Prodware.
-- Le fichier Read-me de fromm-extension est mis à jour à chaque gros avancement.
-- Version cible : outil lancé sur des objets Business Central 26.0
-- Nom de l’app : Fromm-extension
-- Utilisation des analyzers : CodeCop, UICop, PerTenantExtensionCop
-- Structure du projet : dossier `app` avec sous-dossier `fromm-extension`
-- Pas de dépendance externe ou script de déploiement automatique
-- Un script PowerShell "build-and-install.ps1" permet d'automatiser la livraison
-- La mission est terminée uniquement si je valide les tests. Sinon la demande reste ouverte et en cours.
-- Quand tu me demandes d'intervenir sur un fichier, il doit y avoir le nom et l'emplacement du fichier.
-- Un paramétrage permet de définir le répertoire de travaille.
-- Pour toutes modification importante tu commenceras par proposer la création d'une branche.
-
-## 🚫 Éléments à éviter
-- Si des scripts PowerShell sont créés pour analyse ou test, ils doivent être supprimés automatiquement quand l'objectif est atteint.
-- Ne pas créer de nouvelle app ou fichier `app.json`
-- Ne pas modifier le fichier `launch.json`
-- Ne pas proposer de logique de CI/CD ou de packaging
-- Dans les commandes de type "cd "e:\GIT\FROMM France\BC_FROMM\app\fromm-extension" && npm run compile" ne pas utiliser "&&" qui génére l'erreur : "Au caractère Ligne:1 : 55
-+ cd "e:\GIT\FROMM France\BC_FROMM\app\fromm-extension" && npm run comp ...
-+                                                       ~~
-Le jeton « && » n’est pas un séparateur d’instruction valide.
-    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
-    + FullyQualifiedErrorId : InvalidEndOfLine"
-- si des fichiers `.ps1`, `.bat`, ou `.sh` sont créés pour analyse ou test, ils doivent être supprimés automatiquement quand l'objectif est atteint.
-
-## ✅ Ce que je veux
-- Obtenir le fonctionnement de base attendu 
-- Des tests de bases doivent être effectués au moment de la compilation pour garantir le fonctionnement essentiel.
-- Pouvoir importer de nouvelles règles à partir d’un fichier .md ou de retirer les idées du fichier. Je veux pouvoir transformer les nouvelles règles en programme d’aide au développeur.
-- Code clair, commenté, et prêt à être intégré dans le projet existant
-- Réponses en Français uniquement
-- Les objets AL doivent suivre la norme utilisée sur "BC_FROMM\app\src\CodeUnit\AdvancedDistribMgtFR0.Codeunit.al" ou sur "BC_FROMM\app\src\TableExtension\SalesHeaderFR0.TableExt.al".
-
-## 📁 Structure du projet
-- `app/fromm-extension/docs` : contient les documents du projet
-- `scripts/` : contient des outils manuels (non utilisés par Copilot) du projet global
-- `test/` : contient les tests AL du projet global
-- build-and-install.ps1 à la racine du projet compile, test et installe l'app.
-- copilot-context.txt : est un fichier pour la communication avec copilot l doit être conservé dans toutes les versions.
-- Prompt.md sert de mémoire entre copilot et moi pour se souvenir de nos échanges clés. Il ne doit pas être supprimé. (FROMM France\BC_FROMM\Prompt.md)
-- 'app/fromm-extension/src/services/ALAnalyzer.ts est un fichier clé du projet. Il doit être manipulé avec prudence.
-- Le readme de référence du projet est stocké dans "FROMM France\BC_FROMM\app\fromm-extension\README.md".
-
-
-## 🧪 Exemple de prompt efficace
-```al
-// Copilot : 
-<Profil>
-Tu es un expert en projet TypeScript. Tu as également des compétences élevées en langage AL. 
-<Profil>
-<Contraintes>
-Prends le temps de mener une expertise fine et donnes seulement des réponses dont tu es certains à 100%. 
-Tu dois reconstruire l’application fromm-extension fonctionnelle.
-<Contraintes>
-<EtatDesLieux>
-L’extension dispose d’une commande palette pour ajouter dynamiquement des règles CodeCop, avec documentation claire et suppression aisée.
-L’affichage des messages d’analyse est désormais cohérent : le message de début s’affiche dans la barre de statut et disparaît avant le message de fin.
-L’ordre des corrections (régions, en-tête, contenu, formatage) a été fiabilisé pour garantir la robustesse de l’outil.
-Le module de test interne (FROMMTests) existe mais son état fonctionnel doit être vérifié à chaque évolution majeure.
-Le projet a été refactorisé, les anciennes tentatives sont désormais archivées ou supprimées pour garantir un seul jeu de fichiers cohérents.
-</EtatDesLieux>
-<Mission>
-Tu es missionné pour reprendre une application « Fromm-extension » afin de solder la reconstruction de l’application Fromm-extension.
-La mission prioritaire est : faire marcher les fonctions d’analyse et de standardisation en priorité, puis réintégrer progressivement les autres fonctions, avec sauvegarde à chaque étape.
-Un seul jeu de fichiers cohérents et homogènes doit être maintenu dans le répertoire Fromm-extension.
-</Mission>
-<Tests>
-Le répertoire test est stocké : "BC_FROMM\app\fromm-extension\src\test".
-Je veux des jeux de tests non intrusif. Donc tu fais un script PowerShell qui crée un objet de test. A la validation du test tu supprimes les objets utiisés pour les
-</Tests>
-
-## 🧨 Historique des tentatives
-- ✅ **Mission accomplie** : Extension FROMM Standards v1.1.2 finalisée
-- ✅ **Système CodeCop** : 4 règles opérationnelles (AA0005, AA0008, AA0074, AA0217)
-- ✅ **Tests autonomes** : Système de validation automatique intégré
-- ✅ **Fusion réussie** : Branche feature/codecoprules fusionnée dans CHGI
-- ✅ **Package validé** : fromm-standards-1.1.2.vsix prêt pour distribution
-- Tentative 1 : perte du déclenchement automatique du ReadMe (résolu)
-- Refonte en supprimant l'interface graphique et en gardant Ctrl+Alt+F comme analyse et correction (finalisé)
-- Ajout de CodeCop à traiter comme de nouvelles règles (implémenté et validé)
-
-## 🎯 État Actuel (V1.1.2)
-- **Fonctionnalité principale** : ✅ Opérationnelle (Ctrl+Alt+F)
-- **Règles CodeCop** : ✅ 4/4 règles fonctionnelles (100%)
-- **Tests automatiques** : ✅ Validation en temps réel (< 15ms)
-- **Package distribution** : ✅ Prêt et validé
-- **Documentation** : ✅ À jour et complète
-- **Système de test autonome** : `AutoTestCodeCop.ts` dans `src/test/`
-
-## 📋 Réponses attendues
-- Code uniquement, sans explication inutile
-- Commentaires dans le code pour chaque bloc fonctionnel
-- Pas de proposition de fichiers ou scripts hors périmètre
-
-## Communication avec les développeurs
-Propose des dictons de développeur amusant de temps en temps, pas à chaque itération.
-Propose par étape, des informations pour m'aider à monter en compétence de temps en temps.
-Tiens moi informé de toutes informations importantes relatives à Business Central : principalement le technique.
-
-## Projet AUXIGA Classic – Contexte Technique
-# 📘 Contexte Projet – Auxiga Classic
-
-## 🏷️ Informations Générales
-- **Nom de l’app** : Auxiga Classic
-- **Client** : Auxiga
-- **Langage principal** : C/AL 
-- **Cible** : Développement d’objets C/AL BC 14
-- **Structure** : Organisation par dossiers (Codeunit, Table, Page, Report, Xmlport, etc.)
-
-## 🧭 Objectif
-Développer, maintenir et standardiser les objets C/AL du projet Auxiga afin de répondre aux besoins métiers du client, tout en respectant les normes de développement Business Central et en préparant les objets au passage en version BC26.
-
-## 📦 Fonctionnalités principales
-- Création et maintenance d’objets C/AL (Codeunit, Table, Page, Report, etc.)
-- Respect des standards de nommage et de structuration C/AL
-- Documentation technique et fonctionnelle associée
-- Scripts d’automatisation pour le build, le nettoyage et l’import d’objets
-
-## ⚙️ Contraintes techniques
-- Les objets présents sont des objets C/AL exportés en TXT.
-- Respect des conventions C/AL utilisées dans le projet (voir objets de référence si besoin)
-- Progressivement préparer les objets pour faciliter leur passage dans les nouvelles version BC26
-- Scripts PowerShell pour automatiser certaines tâches (build, clean, import, résolution de conflits)
-- Pas de dépendance externe non validée
-- Toute modification importante doit être réalisée sur une branche dédiée
-- Documentation à jour dans les fichiers markdown du projet
-- Utiliser N° et nom des champs quand tu communiques.
-
-## 🚫 À éviter
-- Modification non justifiée de la structure des dossiers principaux
-- Ajout de dépendances ou de scripts sans validation
-- Conservation de scripts temporaires après usage
-- Modification de fichiers de configuration sans validation
-
-## 🧪 Tests
-- Les tests doivent être non-intrusifs et, si possible, automatisés
-- Nettoyage automatique des objets de test après validation
-- Validation des tests à chaque évolution majeure
-
-## 📁 Structure du projet
-- `Codeunit/` : codeunits C/AL
-- `Table/` : tables C/AL
-- `Page/` : pages C/AL
-- `Report/` : rapports C/AL
-- `Xmlport/` : xmlports C/AL
-- `Menusuite/`, `Query/` : autres objets C/AL
-- Fichiers markdown de documentation à la racine
-- Scripts PowerShell pour automatisation (`build`, `clean`, `import`, etc.)
-- `app.json` : configuration de l’application
-
-## 📋 Attentes pour Copilot
-- Réponses en français, code commenté, sans explication inutile
-- Proposer des étapes claires pour chaque intervention
-- Informer sur les points techniques importants liés à Business Central
-- Maintenir la cohérence et la propreté du code et des fichiers
-- Priorité à la robustesse et à la maintenabilité des objets AL
+## 📂 INDEX CLIENTS & MODULES
+1. [FROMM France – Migration Globale NAV2013 ➜ BC26](#client-fromm-france--migration-globale)
+2. [Extension FROMM – Outil VS Code (fromm-extension)](#client-fromm-extension--outil-vs-code)
+3. [AUXIGA Classic – Maintenance C/AL BC14 ➜ Préparation BC26](#client-auxiga-classic)
+4. [ANTEMETA – Module PDE (Production Data Exchange) BC26](#client-antemeta--pde-bc26)
+5. [HYGECO DE – Structuration Extensions Multi-modules](#client-hygeco-de)
+6. [Glossaire / Règles Transverses](#glossaire--transverse)
 
 ---
+## CLIENT: FROMM FRANCE – MIGRATION GLOBALE
+### 🎯 Vision & Objectifs
+Migration NAV 2013 (objets 50xxx) ➜ BC 26 (objets 60xxx) : continuité opérationnelle, conformité, performance, standardisation, extinction spécifiques obsolètes.
 
-Ce fichier sert de base de contexte pour toute intervention sur le projet Auxiga Classic. À relire et compléter selon les spécificités et besoins du projet.
+### 🚦 Phase Actuelle
+Consolidation post-migration Reports (47 commerciaux, 13 statistiques optimisés SP-1712) + préparation campagne de tests structurée.
 
-> 📄 Pour la structure détaillée des documentations de livraison, voir aussi : [GUIDE_TEMPLATE_DOCUMENTATION.md](./Docs/GUIDE_TEMPLATE_DOCUMENTATION.md)
+### 🧭 Gouvernance (Condensé)
+- Détails complets déportés (`app/docs/Standards/`, `COP/README.md`).
+- Traçabilité prompts : ID unique synchronisé (Prompt.md / COP README / Summary / Result).
+- Toute suppression nécessite analyse d’impact documentée.
 
-> ℹ️ Les évolutions majeures et décisions structurantes sont consignées dans [Prompt.txt](./Prompt.txt). Ce fichier est mis à jour à chaque changement de standard ou de fonctionnement.
+### 🛠 Outils Clés
+- Extension interne fromm-extension (Ctrl+Alt+F)
+- Répertoires: `app\src\Report\`, layouts RDLC `app\src\Report\layout\`
+
+### 📐 Standards Résumés
+| Domaine | Règle | Source |
+|---------|-------|--------|
+| Suffixes objets | Suffixe FR0 obligatoire | Coding Standards |
+| IDs | 60000–69999 personnalisés | Conventions internes |
+| Dates | JJ/MM/AA (+ HH:MM si critique) | Date_and_Report_Standards.md |
+| Régions | Template FROMM (#region) | Analyzer_Rules.md |
+| Labels | Français + suffixe Lbl | Analyzer_Rules.md |
+| Performances | SP-1712 (clés / SetRange) | SP-1712_Methodology.md |
+
+### 🧱 Mapping Objets 50xxx ➜ 60xxx (Extrait)
+Voir table synchronisée depuis Plan de test (`Plan_de_Test_Commercial.md`). Mise à jour obligatoire bilatérale.
+
+### 🔒 Règles Critiques
+| Interdiction | Action |
+|--------------|--------|
+| `&&` PowerShell | Séparer ou utiliser `;` |
+| Modifier IDs sans validation | Demander validation métier |
+| `this` en AL | Retirer (variable locale) |
+| Supprimer procédure utilisée | Rechercher références |
+
+### ✔️ Pipeline Qualité (Macro)
+1. Normalisation (Ctrl+Alt+F) + analyzers  
+2. Build + tests  
+3. MAJ mapping objets  
+4. Sync docs (Prompt.md / Standards)  
+5. Plan de test / anomalies  
+6. KPI MAJ
+
+### 👥 Interlocuteurs
+Léa (Achats), Valèrie (Direction Admin), Nathalie (Compta), Marc (Export), Mélanie (ADV)
+
+### 📑 Références Clés
+Plan de test, Standards code, Analyzers, Dates & Reports, Performance (SP-1712), Snippets, Traçabilité prompts, Historique prompts.
+
+### 🧪 Snippets
+Référencer `GUIDE_SNIPPETS_FROMM.md`.
+
+### 🛑 Quotas Copilot
+Surveiller barre VS Code – mode dégradé si quota épuisé.
 
 ---
-## Projet ANTEMETA – Paramétrage PDE BC26
+## CLIENT: FROMM EXTENSION – OUTIL VS CODE
+### 🧭 Objectif
+Extension VS Code (TypeScript) pour normaliser automatiquement le code AL selon standards FROMM.
 
+### ✅ État Fonctionnel (v1.1.2)
+| Élément | Statut |
+|---------|-------|
+| Commande principale Ctrl+Alt+F | OK |
+| Règles CodeCop intégrées (AA0005, AA0008, AA0074, AA0217) | 100% |
+| Tests autonomes (AutoTestCodeCop.ts) | <15ms OK |
+| Packaging VSIX | Prêt |
+| Structure dossier /app/fromm-extension | Validée |
+
+### 📦 Livrables Clés
+`fromm-standards-1.1.2.vsix`, script `build-and-install.ps1`.
+
+### 🔧 Contraintes
+- Pas de nouvelle app.json / pas de CI/CD ajoutée sans validation.
+- Readme auto-ouvert (masquable) – propriété intellectuelle Prodware.
+_Manipulation prudente_: `app/fromm-extension/src/services/ALAnalyzer.ts`.
+
+### 🚫 À Éviter
+Scripts temporaires persistants, usage `&&` PowerShell, duplication logicielle, dépendances externes non validées.
+
+### 🧪 Tests / Stratégie
+- Tests non intrusifs, suppression automatique des artefacts de test.
+- Import dynamique de nouvelles règles depuis .md (vision d’évolution).
+
+### 📋 Historique Synthétique
+Refonte architecture, stabilisation ordre corrections (régions → header → contenu → formatage), debug AA0470, protection FROMM001 renforcée.
+
+### 🔍 Améliorations Futures (Placeholders)
+- Import batch de règles via manifest Markdown.
+- Génération rapport de conformité post-normalisation.
+
+---
+## CLIENT: AUXIGA CLASSIC
+### 🏷️ Contexte
+Maintenance d’objets C/AL (BC14) avec préparation progressive migration BC26.
+
+### 🎯 Objectifs
+Standardiser, documenter, limiter dette technique avant migration majeure.
+
+### ⚙️ Contraintes
+Objets C/AL exportés TXT, scripts PowerShell (build / clean / import), pas de dépendances externes non validées.
+
+### 📁 Structure
+`Codeunit/`, `Table/`, `Page/`, `Report/`, `Xmlport/`, `Menusuite/`, `Query/`, scripts & docs racine.
+
+### 🔒 Règles
+Pas de modification structure dossiers sans justification – prioriser lisibilité et migration future.
+
+### 🧪 Tests
+Tests non intrusifs, nettoyage artefacts, validation à chaque évolution majeure.
+
+### 📌 Attentes Copilot
+Réponses FR, code commenté, étapes claires, focus robustesse.
+
+### Placeholders Évolutions
+- Inventaire complet objets critiques performance.
+- Matrice dépendances inter-modules pour migration.
+
+---
+## CLIENT: ANTEMETA – PDE BC26
 ### 🏷️ Synthèse Express
-Installation, paramétrage et synchronisation du module PDE (Production Data Exchange) sur l'environnement Business Central 26 (Production) du client Antemeta, avec préparation du plan de bascule Go Live (janvier) et validation des duplications de sociétés.
+Installation, paramétrage et synchronisation PDE (Production Data Exchange) sur BC26 Prod – préparation Go Live (janvier) & validation duplications sociétés.
 
 ### 🎯 Objectifs Prioritaires
-| Priorité | Objectif | Délai cible | Indicateur réussite |
-|----------|----------|------------|---------------------|
-| Haute | Installation fiable PDE sur serveur SRVAAPDE01 | Fait | SelfCheck OK / aucun log critique |
-| Haute | Synchronisation BC ↔ PDE stable | Continu | 0 erreurs bloquantes dans journal sync sur 24h |
-| Haute | Plan de bascule Go Live janvier prêt | M-1 | Checklist validée | 
-| Moyenne | Documentation paramétrage consolidée | En cours | Page Confluence / README PDE synchronisée |
-| Moyenne | Procédure duplication société maîtrisée | Avant Go Live | Duplication + sync test OK |
+| Prio | Objectif | Délai | Indicateur |
+|------|----------|-------|-----------|
+| Haute | Installation fiable SRVAAPDE01 | Fait | SelfCheck OK |
+| Haute | Sync BC ↔ PDE stable | Continu | 0 erreurs bloquantes /24h |
+| Haute | Plan de bascule prêt | M-1 | Checklist validée |
+| Moyenne | Doc paramétrage consolidée | En cours | Page Confluence à jour |
+| Moyenne | Procédure duplication maîtrisée | Avant Go Live | Duplication + sync test OK |
 
-### 🖥️ Infrastructure / Environnements
-| Élément | Détail |
-|---------|--------|
-| Serveur PDE | SRVAAPDE01.antemeta.net (192.168.78.66) |
-| Version BC | 26 (Production) |
-| PDE Exécutable | PDEGeneric.Console |
-| Authentification | Compte de service (à préciser) |
-| Fichier config | appsettings.json (connexions BC, SQL, scheduling) |
+### 🖥️ Infra / Références
+Serveur: SRVAAPDE01.antemeta.net (192.168.78.66)  
+Exécutable: `PDEGeneric.Console`  
+Config: `appsettings.json` (BC, SQL, scheduling)
 
-### 🔧 Commandes PDE (Référence rapide)
+### 🔧 Commandes PDE
 ```powershell
-PDEGeneric.Console --selfcheck   # Vérification intégrité & dépendances
-PDEGeneric.Console --init        # Initialisation (tables / métadonnées / seeds)
-PDEGeneric.Console --sync        # Lancement d'une synchronisation complète
+PDEGeneric.Console --selfcheck
+PDEGeneric.Console --init
+PDEGeneric.Console --sync
+# (À confirmer) --dryrun --status --repair
 ```
-Ajouter si disponible : `--dryrun`, `--status`, `--repair` (à confirmer).
 
-### ⚙️ Paramétrage appsettings.json (Checklist)
-| Section | Paramètres critiques | À vérifier |
-|---------|----------------------|-----------|
+### ⚙️ Checklist appsettings.json
+| Section | Points critiques | Statut |
+|---------|------------------|--------|
 | ConnectionStrings | BC, SQL (timeout, pooling) | ✔ |
-| Scheduling | Fréquence sync (cron / interval) | ☐ |
-| Logging | Niveau (Info / Warn / Error) + rotation | ☐ |
-| FeatureFlags | Activation modules optionnels | ☐ |
-| RetryPolicy | Backoff exponentiel / max retries | ☐ |
+| Scheduling | Cron / interval cohérent | ☐ |
+| Logging | Niveau + rotation | ☐ |
+| FeatureFlags | Modules actifs | ☐ |
+| RetryPolicy | Backoff + max retries | ☐ |
 
-### 🔄 Flux de Synchronisation (Vue Haute)
-1. Extraction données BC (staging PDE)
-2. Normalisation / transformation (mapping champs)
-3. Insertion/Update PDE
-4. Journalisation (succès/erreurs) + métriques
-5. Relance sur erreurs transitoires (RetryPolicy)
+### 🔄 Flux Synchronisation (Vue Haute)
+Extraction ➜ Normalisation/mapping ➜ Upsert PDE ➜ Journalisation métriques ➜ Retry transitoires.
 
-### 🧪 Tests Réalisés / À Planifier
-| Type | Statut | Description | Prochaines actions |
-|------|--------|-------------|--------------------|
-| SelfCheck | ✔ | Environnement cohérent | Surveiller récurrence |
-| Init | ✔ | Création structures | Documenter diffs schema |
-| Sync de référence | ✔ | Première synchronisation OK | Mettre en place métriques |
-| Duplication société (sandbox) | ☐ | Cloner + vérifier isolation | Rédiger script automatisé |
-| Charge (volumétrie) | ☐ | Simulation lots massifs | Générer dataset test |
-| Reprise après incident | ☐ | Arrêt service + reprise sync | Tester cohérence delta |
+### 🧪 Tests
+| Type | Statut | Suivant |
+|------|--------|---------|
+| SelfCheck | ✔ | Automatiser quotidien |
+| Init | ✔ | Documenter diffs schéma |
+| Sync référence | ✔ | Mettre métriques |
+| Duplication société | ☐ | Script sandbox |
+| Charge volumétrie | ☐ | Générer dataset |
+| Reprise incident | ☐ | Test cohérence delta |
 
-### 📊 Indicateurs & Monitoring (À mettre en place)
-| Indicateur | Source | Seuil Alerte |
-|------------|--------|-------------|
-| Latence sync (moyenne) | Logs PDE | >10 min |
-| Erreurs bloquantes/h | Logs PDE (Error) | >0 |
-| Erreurs transitoires réessayées | Logs PDE (Warn) | >5/h |
-| Temps init | Journal init | >5 min |
-| Taille tables staging | SQL | +20% vs baseline |
+### 📊 Indicateurs (À Mettre en Place)
+Latence moyenne (>10min alerte), erreurs bloquantes ( >0 ), erreurs transitoires réessayées (>5/h), temps init (>5min), croissance staging SQL (+20% baseline).
 
-### 🧭 Plan de Bascule (Draft)
-| Étape | Description | Responsable | Statut |
-|-------|-------------|-------------|--------|
-| Préparation | Valider config finale appsettings.json | Tech | En cours |
-| Geler périmètre | Congélation des modifications BC critiques | Métier | À planifier |
-| Sauvegarde | Snapshot base BC + PDE | DBA | ☐ |
-| Synchronisation finale | Exécution --sync contrôlée | Tech | ☐ |
-| Validation fonctionnelle | Vérification échantillons métiers | Métier | ☐ |
-| Go / Switch | Passage en production opérée | Direction | ☐ |
-| Post-Go Live | Surveillance renforcée 48h | Tech | ☐ |
+### 🧭 Plan Bascule (Draft)
+Préparation config → Gel périmètre → Snapshot BC+PDE → Sync finale contrôlée → Validation fonctionnelle → Go → Surveillance 48h.
 
-### 🚨 Risques & Mitigations
-| Risque | Impact | Prob. | Mitigation |
-|--------|--------|-------|-----------|
-| Erreurs mapping champs | Données incohérentes | M | Revue mapping + tests sandbox |
-| Latence élevée | Décalage données | M | Monitoring + optimisation index |
-| Mauvaise duplication société | Propagation erreurs | L | Script validé + check list |
-| Paramètre retry mal réglé | Boucle ou perte | L | Revue seuils avant Go Live |
-| Logs non centralisés | Diagnostic lent | M | Activer export / agrégation |
+### 🚨 Risques & Mitigation
+| Risque | Impact | Prob | Mitigation |
+|--------|--------|------|-----------|
+| Mapping erroné | Données incohérentes | M | Revue + sandbox |
+| Latence | Décalage données | M | Monitoring + index |
+| Duplication incorrecte | Propagation erreurs | L | Script validé |
+| Retry mal réglé | Boucles/pertes | L | Revue seuils |
+| Logs dispersés | Diagnostic lent | M | Centralisation |
 
-### 📁 Journal Technique (à compléter)
+### 📁 Journal Technique
 | Date | Action | Résultat | Suivi |
 |------|--------|----------|-------|
 | 2025-08-25 | Installation PDE | OK | Ajouter doc installation |
-| 2025-08-25 | SelfCheck | OK | Automatiser contrôle quotidien |
-| (ajouter) |  |  |  |
+| 2025-08-25 | SelfCheck | OK | Automatiser contrôle |
 
 ### 🔍 Points Ouverts
-- Renseigner paramètres exacts Scheduling.
-- Confirmer stratégies de retry et logs (rotation, rétention).
-- Définir métriques d'alerte (où stocker / dashboard ?).
-- Script duplication société (automatisation + nettoyage post-test).
-- Clarifier périmètre données critiques à valider manuellement après sync.
+- Scheduling exact à formaliser  
+- Stratégies logging / rotation  
+- Métriques & stockage (dashboard cible)  
+- Script duplication société  
+- Périmètre validation manuelle post-sync
 
-### 📘 Sections Placeholder (à détailler)
-#### Étapes techniques détaillées
-Remplacer ce bloc par le contenu `{text1}` une fois validé / structuré (format tableau + sous-sections).
+### 📘 Placeholders
+Étapes techniques détaillées: `{text1}`  
+Détails techniques complémentaires (mapping champs, index SQL): `{text2}`
 
-#### Détails techniques complémentaires
-Remplacer ce bloc par le contenu `{text2}` (config fine, mapping champs, index SQL, etc.).
+### ✅ Règles de Mise à Jour
+1. Toute modif `appsettings.json` horodatée ici  
+2. Nouvelle commande PDE ➜ ajouter dans tableau commandes  
+3. Sync majeure ➜ ligne journal  
+4. Avant Go Live ➜ figer (tag Git) + checklist finale
 
-### ✅ Règles de Mise à Jour (Antemeta)
-1. Toute modification appsettings.json → consigner ici + horodatage.
-2. Chaque nouvelle commande PDE utilisée → référencer sous Commandes PDE.
-3. Après chaque sync majeure → ligne Journal Technique (succès/erreurs majeures).
-4. Avant Go Live → figer cette section (tag Git) + créer checklist finale.
-
-### 🤖 Usage Copilot Spécifique
-- Quand je mentionne « sync PDE », proposer commandes + contrôle logs.
-- Suggérer validation mapping avant modifications massives.
-- Rappeler plan de bascule si date < 30 jours du Go Live.
+### 🤖 Aide Copilot Spécifique
+Terme « sync PDE » ➜ proposer commandes + vérification logs + métriques delta dernier run.
 
 ---
+## CLIENT: HYGECO DE
+### 🏷️ Synthèse Express
+Structuration & industrialisation extensions BC multi-modules (FDD_x) + standardisation reports + packaging cohérent.
+
+### 🎯 Objectifs
+| Prio | Objectif | Indicateur |
+|------|----------|-----------|
+| Haute | Uniformiser publisher/application/runtime | Download Symbols OK |
+| Haute | Cohérence multi-modules | Build multi-modules green |
+| Haute | Standardiser reports & packaging | Pipeline validé |
+| Moyenne | Audit ID ranges/dépendances | Rapport publié |
+| Moyenne | Gouvernance documentaire | README synchronisé |
+
+### 🖥️ Modules / Périmètre
+FDD_01, 02, 03, 09, 12, 13, 16, 17, 20, 22, 23, 30, 31 | Reports: `1_FUN-Reports` | Packaging: `Hygeco_Production` | Libs: Prodware Config/Reports.
+
+### 📐 Standards & Conventions
+| Domaine | Règle | Statut |
+|---------|-------|--------|
+| Publisher | Unique: "Hygeco" | À uniformiser |
+| Application | 18.0.0.0 partout | Divergent |
+| Runtime | Cible unique (proposer 13.0) | Divergent |
+| ID Ranges | Non chevauchants | À auditer |
+| Features | NoImplicitWith + TranslationFile | À uniformiser |
+
+### 🧱 Mapping Modules (Échantillon)
+| Module | ID Range | Runtime | Publisher | Note |
+|--------|---------|--------|----------|------|
+| FDD_20 | 50100-50119 | 11.0 | Hygeco | Aligné platform 18 |
+| FDD_31 | 50311-50320 | 13.0 | Prodware | Changer publisher + runtime |
+| 1_FUN-Reports | 90150-90299 | 11.0 | Hygeco | Dépendances Prodware libs |
+| Racine | 50100-50149 | 11.0 | Default Publisher | Incohérences majeures |
+| Hygeco_Production | 50400-50410 | 11.0 | Prodware | Harmonisation requise |
+
+### 🔒 Protections
+Publisher unique, application=platform, runtime homogène, audit collisions ID périodique, désactiver `includeSourceInSymbolFile` en release.
+
+### ✔️ Pipeline Étapes
+Audit métadonnées → Correction lot app.json → Purge `.alpackages` → Download Symbols → Build global → Rapport qualité (RAPPORT_FINAL_PIPELINE_27062025.md).
+
+### 🛑 Points Techniques à Surveiller
+Publisher incohérent, application 2.0.0.0 ➜ 18.0.0.0, choix runtime, dépendances explicites Prodware.
+
+### 📁 Journal Technique
+| Date | Action | Résultat | Suivi |
+|------|--------|----------|-------|
+| 2025-08-26 | Diagnostic symboles | InternalServerError | Harmonisation en cours |
+
+### 🔍 Points Ouverts
+Lister tous app.json, script harmonisation, confirmer plateforme cible (SaaS / OnPrem container), matrice collisions ID.
+
+### 📘 Placeholders
+Étapes techniques détaillées: `{text1}`  
+Détails techniques complémentaires: `{text2}`
+
+### ✅ Règles Mise à Jour
+1. Modif d’un app.json ➜ journal + diff résumé  
+2. Nouvelle dépendance ➜ noter version exacte  
+3. Build majeur ➜ statut + anomalies  
+4. Pré-release ➜ figer section (tag)
+
+### 🤖 Aide Copilot
+Mot-clé « audit Hygeco » : proposer script extraction (publisher / runtime / application / ranges) + rapport collisions.
+
+---
+## GLOSSAIRE & TRANSVERSE
+| Terme | Définition |
+|-------|------------|
+| SP-1712 | Méthodologie d’optimisation (clés, SetRange) appliquée reports |
+| Mapping Objets | Table correspondance anciens nouveaux IDs + statut migration |
+| RetryPolicy | Stratégie reprise erreurs transitoires (backoff exponentiel) |
+| VSIX | Package installable extension VS Code |
+
+### Règles Globales Documentation
+1. Aucune affirmation sans base factuelle (code ou log).  
+2. Placeholders `{text1}` / `{text2}` remplacés une fois validés – jamais laissés ambigus avant gel Go Live.  
+3. Chaque section client indépendante (copiable isolément).  
+4. Tag Git avant toute bascule critique (Go Live / Release majeure).  
+5. Synchronisation continue entre ce fichier et fichiers contextes clients dédiés.
+
+### Aide Copilot – Triggers Transverses
+| Mot-clé | Réponse attendue |
+|---------|------------------|
+| sync PDE | Commandes + contrôle logs + métriques |
+| audit Hygeco | Script harmonisation + tableau divergences |
+| normaliser report | Application SP-1712 + structure régions |
+| ajouter règle analyzer | Patrons extension FROMM + test unitaire |
+
+---
+Dernière structuration multi-clients : 26/08/2025  
+Prochaine action recommandée : Renseigner placeholders techniques prioritaires `{text1}` (ANTEMETA & HYGECO) + lancer audit Hygeco (publisher/runtime).
+| ID Ranges | Par module, non chevauchants | À vérifier |
 
