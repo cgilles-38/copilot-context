@@ -13,6 +13,8 @@ Préférences : Communication synthétique, non intrusive
 - Urbanisme local
 - Veille environnementale
 - Projets d’aménagement
+- Chiens, éducation canine, obéissance canine
+- Rugby 
 
 # === STYLE DE COMMUNICATION SOUHAITÉ ===
 - Synthèse courte
@@ -22,3 +24,12 @@ Préférences : Communication synthétique, non intrusive
 # === OBJECTIFS PERSONNELS ===
 - Être informé en priorité sur les sujets locaux qui me concernent
 - Garder une trace claire et organisée de mes suivis personnels
+
+
+# === RECHERCHES TECHNIQUES ===
+- Géothermie domestique, pompes de puits, chauffage écologique
+- Pompe immergée inox 4 pouces tri 400V, réf. 06091-2392904 (GRESI-MECA, 2008)
+- Réparateurs spécialisés : ABC POMPES, ABCD, DB Électricité
+- Devis comparatifs : TF2E, F2E, O'Thermie
+- Sites utiles : Foralpes, AL’PAC Géo, Cadastre géothermique Grenoble Métropole
+- Objectif : installation fiable, éligible au crédit d’impôt, avec compteur intermédiaire et filtre à boue

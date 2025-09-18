@@ -21,6 +21,11 @@ Localisation : LYON, Prodware Rhône Alpes
 - Informé avant les collègues
 - Réception de toutes les informations techniques ayant une influence majeure sur le métier
 
+# === GITHUB ===
+- Dépôt personnel : https://github.com/cgilles-38/copilot-context
+- Compte utilisé : cgilles_pdw
+- Structure : `context-pro.txt` + `context-perso.txt` (liés automatiquement)
+
 ## Projet FROMM France – GLOBAL
 # 📘 CONTEXTE COPILOT FROMM FRANCE (Structure Optimisée)
 
